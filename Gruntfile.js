@@ -1,6 +1,7 @@
 'use strict';
 
 module.export = function (grunt) {
+
   require('load-grunt-tasks')(grunt);
 
   grunt.initConfig({
@@ -9,7 +10,7 @@ module.export = function (grunt) {
         banner: '/*! (c) it-gems.com 2014 Filanthropes */\n'
       },
       build: {
-        src: ['<%= pkg.srcDir %>/scrollspy.js', '<%= pkg.srcDir %>/init.js' ], //Use a comma-separated list of the JS files you want to minify
+        src: ['js/jquery.js', 'js/responsiveImage.js', 'js/slideshow.js' ], //Use a comma-separated list of the JS files you want to minify
         dest: '<%= pkg.srcDir %>/built.min.js'
       }
     },
@@ -33,7 +34,9 @@ module.export = function (grunt) {
   //Load the plugin to minify CSSs
   grunt.loadNpmTasks('grunt-contrib-cssmin');
 
-  grunt.registerTask('build', [
+  grunt.loadNpmTasks('load-grunt-tasks');
+
+  grunt.registerTask('default', [
     'uglify',
     'cssmin'
   ]);
