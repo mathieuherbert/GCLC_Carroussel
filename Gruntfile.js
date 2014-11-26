@@ -1,6 +1,7 @@
 'use strict';
 
 module.export = function (grunt) {
+  
   require('load-grunt-tasks')(grunt);
 
   grunt.initConfig({
