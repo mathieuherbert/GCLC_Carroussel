@@ -1,12 +1,21 @@
 #slideshow{
-  position:relative;
-  height:200px;
-  width:700px;
   margin:auto;
 }
 #slideshow ul li{
-  position:relative;
+  margin:auto;
   top:0;
   left:0;
   list-style:none;
+}
+
+#slideshow img{
+  margin:auto;
+}
+
+#slideshow .prev {
+left:0;
+}
+
+#slideshow .next {
+  right:0;
 }

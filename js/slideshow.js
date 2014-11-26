@@ -9,8 +9,6 @@ $(document).ready(function(){
   $img.css('display', 'none'); // on cache les images
   $currentImg.css('display', 'block'); // on affiche seulement l'image courante
 
-  $slideshow.append('<div class="controls"> <span class="prev">Precedent</span> <span class="next">Suivant</span> </div>');
-
   $('.next').click(function(){ // image suivante
 
     i++; // on incrémente le compteur
