@@ -6,7 +6,6 @@
   "devDependendencies": {
     "grunt": "~0.4.5",
     "grunt-contrib-uglify": "~0.4.0",
-    "grunt-contrib-cssmin": "~0.4.1",
-    "grunt-contrib-copy": "~0.4.0"
+    "grunt-contrib-cssmin": "~0.4.1"
   }
 }
