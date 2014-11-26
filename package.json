@@ -1,12 +1,12 @@
 {
-  "name": "Filanthrope-Carroussel",
+  "name": "carroussel",
   "version": "1.0.0",
-  "private": true,
   "dependencies": {},
-  "devDependendencies": {
+  "devDependencies": {
     "grunt": "~0.4.5",
-    "grunt-contrib-uglify": "~0.4.0",
-    "grunt-contrib-cssmin": "~0.4.1"
+    "grunt-contrib-uglify": "~0.6.0",
+    "grunt-contrib-cssmin": "~0.10.0",
+    "grunt-contrib-htmlmin": "~0.3.0"
   },
   "engines": {
     "node": ">=0.10.33"
