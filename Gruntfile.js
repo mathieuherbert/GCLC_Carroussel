@@ -1,7 +1,7 @@
 'use strict';
 
 module.export = function (grunt) {
-  
+
   require('load-grunt-tasks')(grunt);
 
   grunt.initConfig({
@@ -33,6 +33,8 @@ module.export = function (grunt) {
 
   //Load the plugin to minify CSSs
   grunt.loadNpmTasks('grunt-contrib-cssmin');
+
+  grunt.loadNpmTasks('load-grunt-tasks');
 
   grunt.registerTask('build', [
     'uglify',
