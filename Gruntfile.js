@@ -36,7 +36,7 @@ module.export = function (grunt) {
 
   grunt.loadNpmTasks('load-grunt-tasks');
 
-  grunt.registerTask('build', [
+  grunt.registerTask('default', [
     'uglify',
     'cssmin'
   ]);
