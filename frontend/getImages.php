@@ -2,7 +2,7 @@
     $files = scandir ( "../img/slideshow");
 
 
-   
+
 
     $shortFiles = array();
     foreach($files as $file){
