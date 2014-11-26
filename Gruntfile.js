@@ -10,7 +10,7 @@ module.export = function (grunt) {
         banner: '/*! (c) it-gems.com 2014 Filanthropes */\n'
       },
       build: {
-        src: ['<%= pkg.srcDir %>/scrollspy.js', '<%= pkg.srcDir %>/init.js' ], //Use a comma-separated list of the JS files you want to minify
+        src: ['js/jquery.js', 'js/responsiveImage.js', 'js/slideshow.js' ], //Use a comma-separated list of the JS files you want to minify
         dest: '<%= pkg.srcDir %>/built.min.js'
       }
     },
