@@ -41,11 +41,6 @@
 <?php
 ini_set('display_errors', 'on');
 
-
-$testGD = get_extension_funcs("gd"); // Grab function list
-if (!$testGD){ echo "GD not even installed."; exit; }
-echo"<pre>".print_r($testGD,true)."</pre>";
-
 if(isset($_FILES["upload"]["tmp_name"])){
     list($width, $height) = getimagesize($_FILES["upload"]["tmp_name"]);
     $newWidth1 = 900;
@@ -61,32 +56,27 @@ if(isset($_FILES["upload"]["tmp_name"])){
     $extension = strtolower( substr($_FILES["upload"]["name"], strrpos($_FILES["upload"]["name"], ".") + 1, strlen($_FILES["upload"]["name"])) );
 
     if ( $extension == "jpg" || $extension == "jpeg" ) {
-        echo '----> jpg';
         $source = imagecreatefromjpeg($_FILES["upload"]["tmp_name"]);
     }
     else if ( $extension == "png" ) {
-        echo '----> png';
         $source = imagecreatefrompng($_FILES["upload"]["tmp_name"]);
     }
     else {
-        echo '----> nulals';
         echo "<h3 class='text-align'>Seul les jpg et png sont acceptés !</h3>";
     }
 
     imagecopyresized($thumb1, $source, 0, 0, 0, 0, $newWidth1, $newHeight1, $width, $height);
     imagecopyresized($thumb2, $source, 0, 0, 0, 0, $newWidth2, $newHeight2, $width, $height);
-        echo '----> resized';
+
     imagejpeg($thumb1,"../img/slideshow/big".$fileWithoutExtension.'.jpg');
     imagejpeg( $thumb2,"../img/slideshow/small".$fileWithoutExtension.'.jpg');
-        echo '----> created';
+
     $file = fopen ("../img/slideshow/".$fileWithoutExtension.".prop", "w");
-        echo '----> prop opened';
+
     fwrite($file, "Description=".htmlspecialchars($_POST["comment"]));
-        echo '----> written';
     fclose($file);
 
     echo "<h3 class='text-align'>Image ajoutée au caroussel \\o/</h3>";
-
 } ?>
                     <div class="well well-lg">
                         <form role="form" enctype="multipart/form-data" action="upload.php" method="post">
