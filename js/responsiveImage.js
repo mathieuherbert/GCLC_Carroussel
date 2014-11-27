@@ -24,11 +24,11 @@ function integrateImage(){
     var imgName = (screen.width >= 750)?"big"+tabImages[indexImage] : "small"+tabImages[indexImage];
     if(indexImage == 0){
       //Ajout après le ul
-      $("#slideshow ul").append("<li><img src='img/slideshow/"+imgName+"'></li>");
+      $("#slides").append("<li><img src='img/slideshow/"+imgName+"'></li>");
     }
     else{
       //Ajout après l'image précédente
-      $("#slideshow ul li:last").after("<li><img src='img/slideshow/"+imgName+"'/></li>");
+      $("#slides").after("<li><img src='img/slideshow/"+imgName+"'/></li>");
     }
     indexImage++;
     integrateImage();
