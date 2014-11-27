@@ -67,7 +67,7 @@ function next(){
 
 }
 
-function play(){$
+function play(){
   if($("#playButton").attr("class") === "playButton"){
     $("#playButton").attr("class","pauseButton");
     timeOutSlide = setTimeout(function(){ // on utilise une fonction anonyme
