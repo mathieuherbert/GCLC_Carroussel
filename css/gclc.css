@@ -7,3 +7,22 @@ body{
 .glc-navbar a{
     color: #000;
 }
+
+#slideshow{
+    position:relative;
+    height:200px;
+    width:700px;
+    margin:auto;
+}
+#slideshow ul li{
+    position:relative;
+    top:0;
+    left:0;
+    list-style:none;
+}
+
+#prev {
+    width: 46px;
+    height: 44px;
+    background: url(/img/sprites/sprite-square.png) 0 0;
+}
