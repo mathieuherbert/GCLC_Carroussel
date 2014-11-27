@@ -48,7 +48,20 @@ li{
     list-style: none;
 }
 #prev-next{
+    width: 100%;
+    display: block;
     position: absolute;
     top : 50%;
+    margin: auto;
 }
+#prev-next li{
+    display: inline;
+}
+#prev-li{
+    float: left;
 
+}
+#next-li{
+    display: inline;
+    float: right;
+}
