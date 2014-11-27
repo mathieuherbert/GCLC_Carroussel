@@ -50,3 +50,4 @@ node_modules
 dest
 bower_components
 js/bower_components
+.DS_Store
