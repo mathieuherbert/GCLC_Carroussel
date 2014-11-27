@@ -1,11 +1,15 @@
 #!/bin/sh
 
 cd /home/login
+
+date '+%A %W %Y %X' >> log_update_imgs.txt
+
 ls /var/www/gclcimages/ > tempImagesSnapshot.txt
 
 if diff imagesSnapshot.txt tempImagesSnapshot.txt > /dev/null ; then
 	echo "### Pas de modifications ###"		
-	rm tempImagesSnapshot.txt 
+	rm tempImagesSnapshot.txt
+	echo "No modification" >> log_update_imgs.txt
 else
 	rm /var/www/8dffb9edbf/img/slideshow/*
 
@@ -39,4 +43,8 @@ else
     mv tempImagesSnapshot.txt imagesSnapshot.txt
 
     rm -r temp
+
+    echo "!! Modifications !!" >> log_update_imgs.txt
 fi
+
+echo "-----------------" >> log_update_imgs.txt
