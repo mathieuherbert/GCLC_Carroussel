@@ -10,7 +10,7 @@ function test(){
   $img.css('display', 'none'); // on cache les images
   $currentImg.css('display', 'block'); // on affiche seulement l'image courante
 
-  $('.next').click(function(){ // image suivante
+  $('#next').click(function(){ // image suivante
 
     i++; // on incrémente le compteur
 
@@ -25,7 +25,7 @@ function test(){
 
   });
 
-  $('.prev').click(function(){ // image précédente
+  $('#prev').click(function(){ // image précédente
 
     i--; // on décrémente le compteur, puis on réalise la même chose que pour la fonction "suivante"
 

@@ -22,3 +22,24 @@ body{
 #slideshow img{
   margin:auto;
 }
+#prev{
+    display:block;
+    width:55px;
+    height:55px;
+
+    background: url("../img/sprites/sprite-square.png") 0 0 no-repeat;
+    background-position:0 -110px;
+}
+
+#next{
+    display:block;
+    width:55px;
+    height:55px;
+
+    background: url("../img/sprites/sprite-square.png") 0 0 no-repeat;
+    background-position:0 -55px;
+}
+
+li{
+    list-style: none;
+}
