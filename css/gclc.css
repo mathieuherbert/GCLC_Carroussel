@@ -1,3 +1,5 @@
+
+
 body{
     font-family: 'Roboto Slab', serif;
 }
@@ -9,8 +11,10 @@ body{
 }
 
 #slideshow{
-    position:relative;
+    position: relative;
+    display: block;
     margin:auto;
+    margin-bottom: 10px;
 }
 #slideshow ul li{
     position:relative;
@@ -20,7 +24,7 @@ body{
 }
 
 #slideshow img{
-  margin:auto;
+    margin:auto;
 }
 #prev{
     display:block;
@@ -43,3 +47,8 @@ body{
 li{
     list-style: none;
 }
+#prev-next{
+    position: absolute;
+    top : 50%;
+}
+
