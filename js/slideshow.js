@@ -103,6 +103,7 @@ $(document).ready(function(){
         $currentImg.css('display', 'block');
 
         slideImg(); // on oublie pas de relancer la fonction à la fin
+        
 
       }, 3000); // on définit l'intervalle à 7000 millisecondes (7s)
     }
