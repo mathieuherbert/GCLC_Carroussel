@@ -98,3 +98,13 @@ li{
     display:inline;
     float: right;
 }
+
+#puceSlides img{
+    display: inline;
+    width: 25px;
+    height: 25px;
+}
+
+#bottomSlides{
+    margin-bottom: 30px;
+}
