@@ -38,18 +38,17 @@
 
     if ( $extension == "jpg" || $extension == "jpeg" ) {
         $source = imagecreatefromjpeg($_FILES["upload"]["tmp_name"]);
-
-        imagecopyresized($thumb1, $source, 0, 0, 0, 0, $newWidth1, $newHeight1, $width, $height);
-        imagecopyresized($thumb2, $source, 0, 0, 0, 0, $newWidth2, $newHeight2, $width, $height);
-           echo "../img/slideshow/big".$_FILES["upload"]["name"];
     }
     else if ( $extension == "png" ) {
         $source = imagecreatefrompng($_FILES["upload"]["tmp_name"]);
-
-        imagecopyresized($thumb1, $source, 0, 0, 0, 0, $newWidth1, $newHeight1, $width, $height);
-        imagecopyresized($thumb2, $source, 0, 0, 0, 0, $newWidth2, $newHeight2, $width, $height);
-            echo "../img/slideshow/big".$_FILES["upload"]["name"];
     }
+    else {
+        echo "<br/>--> Seul les jpg et png sont acceptés ! <--<br/>";
+    }
+
+    imagecopyresized($thumb1, $source, 0, 0, 0, 0, $newWidth1, $newHeight1, $width, $height);
+    imagecopyresized($thumb2, $source, 0, 0, 0, 0, $newWidth2, $newHeight2, $width, $height);
+        echo "../img/slideshow/big".$_FILES["upload"]["name"];
     imagejpeg($thumb1,"../img/slideshow/big".$fileWithoutExtension.'.jpg');
     imagejpeg( $thumb2,"../img/slideshow/small".$fileWithoutExtension.'.jpg');
 
