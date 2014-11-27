@@ -54,6 +54,8 @@ module.exports = function (grunt) {
           {expand: true, src: ['frontend/*'],
             dest: 'dest'},
           {expand: true, src: ['updateImages.sh'],
+            dest: 'dest'},
+          {expand: true, src: ['twitter.html'],
             dest: 'dest'}
         ],
       },

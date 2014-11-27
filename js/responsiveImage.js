@@ -38,13 +38,13 @@ function integrateImage(){
     if(indexImage == 0){
       //Ajout après le ul
 
-
-      $("#slides").append("<li><img class=' img-slide' style='opacity:1;' src='img/slideshow/"+imgName+"' ></li>");
+      $("#slides").append("<li><img style='opacity:1;' src='img/slideshow/"+imgName+"' ></li>");
       $("#comments").append("<span>"+tabProperties[indexImage]+"</span>");
     }
     else{
       //Ajout après l'image suivantes
-      $("#slides img:last").after("<li><img class=' img-slide' style='display:none' src='img/slideshow/"+imgName+"'/></li>");
+
+      $("#slides img:last").after("<li><img style='display:none' src='img/slideshow/"+imgName+"'/></li>");
       $("#comments span:last").after("<span style='display:none'>"+tabProperties[indexImage]+"</span>");
     }
     indexImage++;

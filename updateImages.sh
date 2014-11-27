@@ -4,6 +4,7 @@ cd /home/login
 
 date '+%A %W %Y %X' >> log_update_imgs.txt
 
+touch imagesSnapshot.txt
 ls /var/www/gclcimages/ > tempImagesSnapshot.txt
 
 if diff imagesSnapshot.txt tempImagesSnapshot.txt > /dev/null ; then
