@@ -19,12 +19,19 @@ function loadImage(){
       tabImages[i] = key;
       tabProperties[i] = filesJSON[i][key];
     }
-    $("#puceSlides").append("<img id='"+(filesJSON.length -1 - i)+"' src='img/not-selected.png'/>")
+    $("#puceSlides").append("<img src='img/not-selected.png' onclick='swapSlides("+(i)+")'/>")
   }
   $("#numImgTotal").text(tabImages.length);
 }
 
 function integrateImage(){
+  if(arguments[0] != undefined){
+    for(var i = indexImage ; i <= arguments[0];i++){
+      integrateImage();
+    }
+    return;
+  }
+
   if(indexImage < tabImages.length){
     var imgName = (screen.width >= 750)?"big"+tabImages[indexImage] : "small"+tabImages[indexImage];
     if(indexImage == 0){
