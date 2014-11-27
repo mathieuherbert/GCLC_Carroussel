@@ -68,6 +68,7 @@ li{
 }
 #slides{
     padding-left: 0px;
+    z-index: -1;
 }
 #prev-next ul{
     padding-left: 0px;
@@ -78,4 +79,9 @@ li{
 .container{
     padding-left: 0px;
     padding-right: 0px;
+}
+#comments{
+    text-align: center;
+    margin-top: -1.42em;
+    z-index: 1000;
 }
