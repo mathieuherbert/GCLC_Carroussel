@@ -130,3 +130,16 @@ li{
   background: url("../img/sprites/sprite-square.png") 0 0 no-repeat;
   background-position:-55px 0px;
 }
+#play{
+    display: inline;
+
+    top : 10%;
+    display: block;
+    position: absolute;
+    width: 95%;
+}
+
+#playButton{
+    display: inline;
+    float: right;
+}
