@@ -144,39 +144,6 @@ $(document).ready(function(){
     });
 
 
-
-
-    console.log($('#slideshow'));
-    // $('#slideshow').swipeRight(function() {
-    //
-    //   i--; // on décrémente le compteur, puis on réalise la même chose que pour la fonction "suivante"
-    //
-    //   if( i >= 0 ){
-    //     $img.css('display', 'none');
-    //     $currentImg = $img.eq(i);
-    //     $currentImg.css('display', 'block');
-    //   }
-    //   else{
-    //     i = 0;
-    //   }
-    //
-    // });
-    //
-    // $('#slideshow').swipeLeft(function(){
-    //   i++; // on incrémente le compteur
-    //
-    //   if( i <= indexImg ){
-    //     $img.css('display', 'none'); // on cache les images
-    //     $currentImg = $img.eq(i); // on définit la nouvelle image
-    //     $currentImg.css('display', 'block'); // puis on l'affiche
-    //   }
-    //   else {
-    //     i = indexImg;
-    //   }
-    //
-    // });
-
-
 }
   loadImage();
   integrateImage();
