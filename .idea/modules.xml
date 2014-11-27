@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/GCLC_Carroussel.iml" filepath="$PROJECT_DIR$/GCLC_Carroussel.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/GCLC_Carroussel.iml" filepath="$PROJECT_DIR$/.idea/GCLC_Carroussel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GCLC_Carroussel.iml" filepath="$PROJECT_DIR$/GCLC_Carroussel.iml" />
     </modules>
   </component>
 </project>
+
