@@ -18,11 +18,28 @@
     <script type="text/javascript" src="../js/jquery.js"></script>
     <script type="text/javascript" src="../js/slideshow.js"></script>
 </head>
+<body>
+<nav class="navbar glc-navbar navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <img src="../img/logo.png" width="62" style="float: left;" />
+            <a class="navbar-brand">GreenCodeLab Challenge 2014</a>
+        </div>
+    </div>
+</nav>
+<div class="jumbotron">
+    <div class="container">
+        <h1>Hello, world!</h1>
+        <p>Welcome on board! This is your sample website. Fell free to add / correct what you want.
+        <p>Please do not delete any sentence included in this webpage</p>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
 
 <?php
-    if(isset($_FILES["upload"]["tmp_name"])){
-        echo json_encode($_FILES["upload"]);
-
+if(isset($_FILES["upload"]["tmp_name"])){
     list($width, $height) = getimagesize($_FILES["upload"]["tmp_name"]);
     $newWidth1 = 900;
     $newWidth2 = 320;
@@ -43,12 +60,12 @@
         $source = imagecreatefrompng($_FILES["upload"]["tmp_name"]);
     }
     else {
-        echo "<br/>--> Seul les jpg et png sont acceptés ! <--<br/>";
+        echo "<h3 class='text-align'>Seul les jpg et png sont acceptés !</h3>";
     }
 
     imagecopyresized($thumb1, $source, 0, 0, 0, 0, $newWidth1, $newHeight1, $width, $height);
     imagecopyresized($thumb2, $source, 0, 0, 0, 0, $newWidth2, $newHeight2, $width, $height);
-        echo "../img/slideshow/big".$_FILES["upload"]["name"];
+
     imagejpeg($thumb1,"../img/slideshow/big".$fileWithoutExtension.'.jpg');
     imagejpeg( $thumb2,"../img/slideshow/small".$fileWithoutExtension.'.jpg');
 
@@ -57,27 +74,9 @@
     fwrite($file, "Description=".htmlspecialchars($_POST["comment"]));
     fclose($file);
 
-}else{ ?>
+    echo "<h3 class='text-align'>Image ajoutée au caroussel \\o/</h3>";
 
-<body>
-    <nav class="navbar glc-navbar navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <img src="../img/logo.png" width="62" style="float: left;" />
-                <a class="navbar-brand">GreenCodeLab Challenge 2014</a>
-            </div>
-        </div>
-    </nav>
-    <div class="jumbotron">
-        <div class="container">
-            <h1>Hello, world!</h1>
-            <p>Welcome on board! This is your sample website. Fell free to add / correct what you want.
-                <p>Please do not delete any sentence included in this webpage</p>
-            </div>
-        </div>      
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 col-md-offset-4">
+} ?>
                     <div class="well well-lg">
                         <form role="form" enctype="multipart/form-data" action="upload.php" method="post">
                           <div class="form-group">
@@ -95,7 +94,4 @@
             </div>
         </div>
     </body>
- 
-<?php } ?>
-
 </html>
