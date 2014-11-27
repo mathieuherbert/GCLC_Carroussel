@@ -19,21 +19,21 @@ module.exports = function (grunt) {
       }
     },
 
-    //htmlmin: {
-    //  dist: {
-    //    options: {
-    //      collapseWhitespace: true,
-    //      collapseBooleanAttributes: true,
-    //      removeCommentsFromCDATA: true,
-    //      removeOptionalTags: true
-    //    },
-    //    files: [{
-    //      expand: true,
-    //      src: ['index.html'],
-    //      dest: 'dest'
-    //    }]
-    //  }
-    //},
+    htmlmin: {
+      dist: {
+        options: {
+          collapseWhitespace: true,
+          collapseBooleanAttributes: true,
+          removeCommentsFromCDATA: true,
+          removeOptionalTags: true
+        },
+        files: [{
+          expand: true,
+          src: ['index.html'],
+          dest: 'dest'
+        }]
+      }
+    },
 
     copy: {
       main: {
@@ -52,8 +52,6 @@ module.exports = function (grunt) {
           {expand: true, src: ['backoffice/*'],
             dest: 'dest', filter: 'isFile'},
           {expand: true, src: ['frontend/*'],
-            dest: 'dest'},
-          {expand: true, src: ['index.html'],
             dest: 'dest'}
         ],
       },
@@ -84,7 +82,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('default', [
   'uglify',
-  //'htmlmin',
+  'htmlmin',
   'cssmin',
   'copy'
   ]);
