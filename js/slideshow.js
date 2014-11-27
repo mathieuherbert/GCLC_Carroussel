@@ -30,12 +30,7 @@ function majOverImages(){
 }
 
 function funcTimeOutSlide(){
-  if(i < indexImg){ // si le compteur est inférieur au dernier index
-    i++; // on l'incrémente
-  }
-  else{ // sinon, on le remet à 0 (première image)
-    i = 0;
-  }
+  i = (i<indexImg)?i+1:0;
 
   fullMajImages();
 
@@ -58,32 +53,50 @@ function slideImg(){
 
 function next(){
   i++; // on incrémente le compteur
-  //window.clearTimeout(timeOutSlide);
+  window.clearTimeout(timeOutSlide);
+  timeOutSlide = setTimeout(function(){ // on utilise une fonction anonyme
+    funcTimeOutSlide();
+  }, 3000);
   if( i <= indexImg ){
     fullMajImages();
   }
   else{
-    i = indexImg;
+    i = 0;
+    fullMajImages();s
   }
 
 }
 
+function play(){
+  if($("#playButton").attr("class") === "playButton"){
+    $("#playButton").attr("class","pauseButton");
+    timeOutSlide = setTimeout(function(){ // on utilise une fonction anonyme
+      funcTimeOutSlide();
+    }, 3000);
+  }
+  else{
+    $("#playButton").attr("class","playButton");
+    window.clearTimeout(timeOutSlide);
+  }
+}
+
 function prev(){
   i--; // on décrémente le compteur, puis on réalise la même chose que pour la fonction "suivante"
-
+  window.clearTimeout(timeOutSlide);
+  timeOutSlide = setTimeout(function(){ // on utilise une fonction anonyme
+    funcTimeOutSlide();
+  }, 3000);
   if( i >= 0 ){
     fullMajImages();
   }
   else{
-    i = 0;
+    i = indexImg;
+    fullMajImages();
   }
 
 }
 
 $(document).ready(function(){
-
-
-
   function test(){
 
      $slideshow =  $('#slideshow'); // on cible le bloc du slideshow
@@ -107,9 +120,14 @@ $(document).ready(function(){
       }
     });
 
+    $('#prev').mouseover(function(){
+      if(indexImg < (tabImages.length-1) && i == indexImg){
+        majOverImages();
+      }
+    });
+
 
 }
-
   loadImage();
   integrateImage();
   test();
