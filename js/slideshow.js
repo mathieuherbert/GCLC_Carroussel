@@ -3,7 +3,7 @@ $(document).ready(function(){
 
     var $slideshow =  $('#slideshow'), // on cible le bloc du slideshow
                       $img = $('#slideshow img'), // on cible les images contenues dans le slideshow
-                      $span = $('#slideshow span')// on cible les span contenues dans le slideshow
+                      $span = $('#comments span')// on cible les span contenues dans le slideshow
                       indexImg = $img.length - 1, // on définit l'index du dernier élément
                       i = 0, // on initialise un compteur
                       $currentImg = $img.eq(i); // enfin, on cible l'image courante, qui possède l'index i (0 pour l'instant)
@@ -16,8 +16,9 @@ $(document).ready(function(){
       if(indexImg < (tabImages.length-1) && i == indexImg){
         integrateImage();
         $img = $('#slideshow img');
-        $span = $('#slideshow span');
+        $span = $('#comments span');
         indexImg = $img.length-1;
+        $("#numImgCurrent").text(i+1);
       }
     });
 
@@ -32,6 +33,7 @@ $(document).ready(function(){
         $currentSpan = $span.eq(i);
         $currentImg.css('display', 'block'); // puis on l'affiche
         $currentSpan.css('display', 'block');
+        $("#numImgCurrent").text(i+1);
       }
       else{
         i = indexImg;
@@ -81,6 +83,7 @@ $(document).ready(function(){
         $currentSpan = $span.eq(i);
         $currentImg.css('display', 'block'); // puis on l'affiche
         $currentSpan.css('display', 'block');
+        $("#numImgCurrent").text(i+1);
       }
       else{
         i = 0;
@@ -93,7 +96,7 @@ $(document).ready(function(){
         if(indexImg < (tabImages.length-1)){
           integrateImage();
           $img = $('#slideshow img');
-          $span = $('#slideshow span');
+          $span = $('#comments span');
           indexImg = $img.length-1;
         }
       },2500);
@@ -113,6 +116,7 @@ $(document).ready(function(){
         $currentSpan = $span.eq(i);
         $currentImg.css('display', 'block'); // puis on l'affiche
         $currentSpan.css('display', 'block');
+        $("#numImgCurrent").text(i+1);
 
         slideImg(); // on oublie pas de relancer la fonction à la fin
 
