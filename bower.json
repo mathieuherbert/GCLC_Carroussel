@@ -1,0 +1,8 @@
+{
+  "name": "carroussel",
+  "version": "1.0.0",
+  "dependencies": {},
+  "devDependencies": {
+    "quojs": "3.0.5"
+  }
+}
