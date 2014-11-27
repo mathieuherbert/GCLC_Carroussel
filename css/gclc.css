@@ -10,8 +10,6 @@ body{
 
 #slideshow{
     position:relative;
-    height:200px;
-    width:700px;
     margin:auto;
 }
 #slideshow ul li{
@@ -21,8 +19,6 @@ body{
     list-style:none;
 }
 
-#prev {
-    width: 46px;
-    height: 44px;
-    background: url(/img/sprites/sprite-square.png) 0 0;
+#slideshow img{
+  margin:auto;
 }

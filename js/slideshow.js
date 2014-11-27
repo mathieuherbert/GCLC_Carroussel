@@ -1,4 +1,5 @@
-$(document).ready(function(){
+// $(document).ready(function(){
+function test(){
 
   var $slideshow =  $('#slideshow'), // on cible le bloc du slideshow
                     $img = $('#slideshow img'), // on cible les images contenues dans le slideshow
@@ -61,4 +62,5 @@ $(document).ready(function(){
 
   slideImg(); // enfin, on lance la fonction une première fois
 
-});
+}
+// );
