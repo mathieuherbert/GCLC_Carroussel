@@ -89,3 +89,12 @@ li{
     color:white;
 
 }
+#num{
+    display:inline;
+    float: left;
+}
+
+#puceSlides{
+    display:inline;
+    float: right;
+}
