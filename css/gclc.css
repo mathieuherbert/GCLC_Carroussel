@@ -25,6 +25,7 @@ body{
 
 #slideshow img{
     margin:auto;
+    width: 100%;
 }
 #prev{
     display:block;
