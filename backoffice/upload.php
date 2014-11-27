@@ -33,14 +33,18 @@
     $thumb1 = imagecreatetruecolor($newWidth1, $newHeight1);
     $thumb2 = imagecreatetruecolor($newWidth2, $newHeight2);
 
-    $source = imagecreatefromjpeg($_FILES["upload"]["tmp_name"]);
+    $extension = strtolower( substr($_FILES["upload"]["name"], strrpos($_FILES["upload"]["name"], ".") + 1, strlen($_FILES["upload"]["name"])) );
+        echo '----> ' . $extension;
+    if ( $extension == "jpg" || $extension == "jpeg" ) {
+        $source = imagecreatefromjpeg($_FILES["upload"]["tmp_name"]);
 
-    imagecopyresized($thumb1, $source, 0, 0, 0, 0, $newWidth1, $newHeight1, $width, $height);
-    imagecopyresized($thumb2, $source, 0, 0, 0, 0, $newWidth2, $newHeight2, $width, $height);
-       echo "../img/slideshow/big".$_FILES["upload"]["name"];
-    imagejpeg($thumb1,"../img/slideshow/big".$_FILES["upload"]["name"]);
-    imagejpeg( $thumb2,"../img/slideshow/small".$_FILES["upload"]["name"]);
-
+        imagecopyresized($thumb1, $source, 0, 0, 0, 0, $newWidth1, $newHeight1, $width, $height);
+        imagecopyresized($thumb2, $source, 0, 0, 0, 0, $newWidth2, $newHeight2, $width, $height);
+           echo "../img/slideshow/big".$_FILES["upload"]["name"];
+        imagejpeg($thumb1,"../img/slideshow/big".$_FILES["upload"]["name"]);
+        imagejpeg( $thumb2,"../img/slideshow/small".$_FILES["upload"]["name"]);
+    }
+    
     $file = fopen ("../img/slideshow/".substr($_FILES["upload"]["name"],0,strrpos($_FILES["upload"]["name"],".")).".prop", "a");
 
     fwrite($file, "Description=".htmlspecialchars($_POST["comment"]));
