@@ -131,7 +131,7 @@ li{
   background-position:-55px 0px;
 }
 
-#imagesTransition1 img {
+#imagesTransition1 span img {
   opacity: 0;/* l'opacite que vous voulez au depart */
   border: none;/* enlever les border d'une image en lien */
   -ms-filter: "prodig:DXImageTransform.Microsoft.Alpha(Opacity=25)"; /* Hack IE8 */
@@ -141,4 +141,13 @@ li{
   -o-transition: opacity 0.5s ease-in-out;/* transition pour Opéra */
   transition: opacity 0.5s ease-in-out; /* on écrit cette ligne à la fin de façon à ce que ce soit elle qui soit prise en compte lorsque l'attribut transition sera pris en compte par tous les navigateurs */
 
+}
+
+#block span img {
+  display:block;
+  opacity:1;
+}
+
+#none span img {
+  display:none;
 }

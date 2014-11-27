@@ -40,7 +40,6 @@ function majOverImages(rigth){
     indexImg = $img.length-1;
     $("#numImgCurrent").text(i+1);
   }
-
 }
 
 function funcTimeOutSlide(){

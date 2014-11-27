@@ -19,7 +19,7 @@ function loadImage(){
       tabImages[i] = key;
       tabProperties[i] = filesJSON[i][key];
     }
-    $("#puceSlides").append("<img src='img/not-selected.png' onmouseover='swapOver("+(i)+")' onclick='swapSlides("+(i)+")'/>");
+    $("#puceSlides").append("<img  src='img/not-selected.png' onmouseover='swapOver("+(i)+")' onclick='swapSlides("+(i)+")'/>");
   }
   $("#numImgTotal").text(tabImages.length);
 }
@@ -38,7 +38,7 @@ function integrateImage(){
     if(indexImage == 0){
       //Ajout après le ul
 
-      $("#slides").append("<li><img src='img/slideshow/"+imgName+"' ></li>");
+      $("#slides").append("<li><img class='imagesTransition1' src='img/slideshow/"+imgName+"' ></li>");
       $("#comments").append("<span>"+tabProperties[indexImage]+"</span>");
     }
     else{
