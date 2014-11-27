@@ -5,17 +5,20 @@ var addEvent=function(){return document.addEventListener?function(a,c,d){if(a&&a
 var indexImage=0;
 var tabImages = new Array();
 var tabProperties = new Array();
+var files = new Array();
 function loadImage(){
-  if(0==1){
-    $.get('frontend/getImages.php',function(data){
-      obj = JSON.parse(data.toString());
-    });
-  }
-  else{
-    tabImages[0] = "Img1.gif";
-    tabProperties[0] = "Prop 1";
-    tabImages[1] = "Img2.gif";
-    tabProperties[1] = "Prop 2";
+  var obj = JSON.parse($.ajax({
+    type:"GET",
+    url:"frontend/getImages.php",
+    async:false
+  }).responseText);
+
+  filesJSON = obj["files"];
+  for(i = 0; i<filesJSON.length;i++){
+    for(key in filesJSON[i]){
+      tabImages[i] = key;
+      tabProperties[i] = filesJSON[i][key];
+    }
   }
 }
 
@@ -24,40 +27,14 @@ function integrateImage(){
     var imgName = (screen.width >= 750)?"big"+tabImages[indexImage] : "small"+tabImages[indexImage];
     if(indexImage == 0){
       //Ajout après le ul
-      $("#slides").append("<li><img src='img/slideshow/"+imgName+"'></li>");
+
+      $("#slideshow ul").append("<li><img src='img/slideshow/"+imgName+"'></li>");
     }
     else{
       //Ajout après l'image précédente
-      $("#slides").after("<li><img src='img/slideshow/"+imgName+"'/></li>");
+      $("#slideshow ul li:last").after("<li><img src='img/slideshow/"+imgName+"'/></li>");
     }
     indexImage++;
     integrateImage();
   }
 }
-
-
-var responsiveEnhance = function(img, width, monitor) {
-  if (img.length) {
-    for (var i=0, len=img.length; i<len; i++) {
-      responsiveEnhance(img[i], width, monitor);
-    }
-  } else {
-    if (((' '+img.className+' ').replace(/[\n\t]/g, ' ').indexOf(' large ') == -1) && screen.width >= 750) {
-      console.log(screen.width);
-      var fullimg = new Image();
-      addEvent(fullimg, 'load', function(e) {
-        img.className += ' large';
-        img.src = this.src;
-      });
-      fullimg.src = img.getAttribute('data-fullsrc');
-    }
-  }
-  if (monitor != false) {
-    addEvent(window, 'resize', function(e) {
-      responsiveEnhance(img, width, false);
-    });
-    addEvent(img, 'load', function(e) {
-      responsiveEnhance(img, width, false);
-    });
-  }
-};
