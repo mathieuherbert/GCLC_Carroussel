@@ -39,6 +39,8 @@
         <div class="col-md-4 col-md-offset-4">
 
 <?php
+ini_set('display_errors', 'on');
+
 if(isset($_FILES["upload"]["tmp_name"])){
     list($width, $height) = getimagesize($_FILES["upload"]["tmp_name"]);
     $newWidth1 = 900;
@@ -52,8 +54,6 @@ if(isset($_FILES["upload"]["tmp_name"])){
 
     $fileWithoutExtension = substr($_FILES["upload"]["name"],0,strrpos($_FILES["upload"]["name"],"."));
     $extension = strtolower( substr($_FILES["upload"]["name"], strrpos($_FILES["upload"]["name"], ".") + 1, strlen($_FILES["upload"]["name"])) );
-
-    echo '---->'.$extension;
 
     if ( $extension == "jpg" || $extension == "jpeg" ) {
         echo '----> jpg';
