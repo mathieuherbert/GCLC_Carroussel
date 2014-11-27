@@ -65,3 +65,16 @@ li{
     display: inline;
     float: right;
 }
+#slides{
+    padding-left: 0px;
+}
+#prev-next ul{
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-right: 0px;
+}
+
+.container{
+    padding-left: 0px;
+    padding-right: 0px;
+}
