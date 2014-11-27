@@ -32,9 +32,9 @@ function integrateImage(){
     }
     else{
       //Ajout après l'image précédente
-      $("#slides li:last").after("<li><img src='img/slideshow/"+imgName+"'/></li>");
+      $("#slides li:last").after("<li><img style='display:none' src='img/slideshow/"+imgName+"'/></li>");
     }
     indexImage++;
-    integrateImage();
+    //integrateImage();
   }
 }
