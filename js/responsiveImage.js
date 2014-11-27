@@ -19,14 +19,15 @@ function loadImage(){
       tabImages[i] = key;
       tabProperties[i] = filesJSON[i][key];
     }
-    $("#puceSlides").append("<img src='img/not-selected.png' onclick='swapSlides("+(i)+")'/>")
+    $("#puceSlides").append("<img src='img/not-selected.png' onmouseover='swapOver("+(i)+")' onclick='swapSlides("+(i)+")'/>");
   }
   $("#numImgTotal").text(tabImages.length);
 }
 
 function integrateImage(){
   if(arguments[0] != undefined){
-    for(var i = indexImage ; i <= arguments[0];i++){
+
+    for(var i = indexImage-1 ; i <= arguments[0];i++){
       integrateImage();
     }
     return;
@@ -37,7 +38,7 @@ function integrateImage(){
     if(indexImage == 0){
       //Ajout après le ul
 
-      $("#slides").append("<li><img src='img/slideshow/"+imgName+"'></li>");
+      $("#slides").append("<li><img src='img/slideshow/"+imgName+"' ></li>");
       $("#comments").append("<span>"+tabProperties[indexImage]+"</span>");
     }
     else{
