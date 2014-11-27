@@ -70,4 +70,11 @@ li{
 }
 #prev-next ul{
     padding-left: 0px;
+    padding-right: 0px;
+    margin-right: 0px;
+}
+
+.container{
+    padding-left: 0px;
+    padding-right: 0px;
 }
