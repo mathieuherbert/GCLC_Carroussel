@@ -1,5 +1,9 @@
 function swapSlides(id){
   i = id;
+  window.clearTimeout(timeOutSlide);
+  timeOutSlide = setTimeout(function(){ // on utilise une fonction anonyme
+    funcTimeOutSlide();
+  }, 3000);
   fullMajImages();
 
 }
@@ -30,40 +34,59 @@ function majOverImages(){
 }
 
 function funcTimeOutSlide(){
-  i = (i<indexImg)?i+1:0;
 
-  fullMajImages();
+  timeOutSlide = setTimeout(function(){ // on utilise une fonction anonyme
+    i = (i<indexImg)?i+1:0;
 
-  slideImg(); // on oublie pas de relancer la fonction à la fin
+    fullMajImages();
+
+    funcTimeOutSlide(); // on oublie pas de relancer la fonction à la fin
+
+    // if(indexImg < (tabImages.length-1)){
+    //   funcTimeOutAddSlide();
+    // }
+  }, 3000); // on définit l'intervalle à 7000 millisecondes (7s)ss
 }
 
-function slideImg(){
+function funcTimeOutAddSlide(){
+  console.log(new Date(Date.now()));
+  time = ($typeScreen)?2500:500;
   timeOutLoading = setTimeout(function(){
-    if(indexImg < (tabImages.length-1)){
       integrateImage();
       $img = $('#slides img');
       $span = $('#comments span');
       indexImg = $img.length-1;
-    }
-  },2500);
-  timeOutSlide = setTimeout(function(){ // on utilise une fonction anonyme
-    funcTimeOutSlide();
-  }, 3000); // on définit l'intervalle à 7000 millisecondes (7s)
+      if(indexImg < (tabImages.length-1)){
+        funcTimeOutAddSlide();
+      }
+  },time);
 }
+
+// function slideImg(){
+//   console.log(new Date(Date.now()));
+//   time = ($typeScreen)?2500:500;
+//   timeOutLoading = setTimeout(function(){
+//     if(indexImg < (tabImages.length-1)){
+//       integrateImage();
+//       $img = $('#slides img');
+//       $span = $('#comments span');
+//       indexImg = $img.length-1;
+//     }
+//   },time);
+//
+//   timeOutSlide = setTimeout(function(){ // on utilise une fonction anonyme
+//     funcTimeOutSlide();
+//   }, 3000); // on définit l'intervalle à 7000 millisecondes (7s)
+// }
 
 function next(){
   i++; // on incrémente le compteur
   window.clearTimeout(timeOutSlide);
-  timeOutSlide = setTimeout(function(){ // on utilise une fonction anonyme
-    funcTimeOutSlide();
-  }, 3000);
-  if( i <= indexImg ){
-    fullMajImages();
-  }
-  else{
+  funcTimeOutSlide();
+  if( i > indexImg ){
     i = 0;
-    fullMajImages();s
   }
+  fullMajImages();
 
 }
 
@@ -83,22 +106,16 @@ function play(){
 function prev(){
   i--; // on décrémente le compteur, puis on réalise la même chose que pour la fonction "suivante"
   window.clearTimeout(timeOutSlide);
-  timeOutSlide = setTimeout(function(){ // on utilise une fonction anonyme
-    funcTimeOutSlide();
-  }, 3000);
-  if( i >= 0 ){
-    fullMajImages();
-  }
-  else{
+  funcTimeOutSlide();
+  if( i < 0 ){
     i = indexImg;
-    fullMajImages();
   }
-
+  fullMajImages();
 }
 
 $(document).ready(function(){
   function test(){
-
+     $typeScreen = screen.width >= 750 ;
      $slideshow =  $('#slideshow'); // on cible le bloc du slideshow
      $img = $('#slides img'); // on cible les images contenues dans le slideshow
      $span = $('#comments span');// on cible les span contenues dans le slideshow
@@ -164,5 +181,6 @@ $(document).ready(function(){
   loadImage();
   integrateImage();
   test();
-  slideImg();
+  funcTimeOutAddSlide();
+  funcTimeOutSlide();
 });
