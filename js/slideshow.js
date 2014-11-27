@@ -10,6 +10,14 @@ $(document).ready(function(){
     $img.css('display', 'none'); // on cache les images
     $currentImg.css('display', 'block'); // on affiche seulement l'image courante
 
+    $('#next').mouseover(function(){
+      if(indexImg < (tabImages.length-1) && i == indexImg){
+        integrateImage();
+        $img = $('#slideshow img');
+        indexImg = $img.length-1;
+      }
+    });
+
     $('#next').click(function(){ // image suivante
 
       i++; // on incrémente le compteur
@@ -72,7 +80,15 @@ $(document).ready(function(){
     });
 
     function slideImg(){
+      setTimeout(function(){
+        if(indexImg < (tabImages.length-1)){
+          integrateImage();
+          $img = $('#slideshow img');
+          indexImg = $img.length-1;
+        }
+      },2500);
       setTimeout(function(){ // on utilise une fonction anonyme
+
 
         if(i < indexImg){ // si le compteur est inférieur au dernier index
           i++; // on l'incrémente
