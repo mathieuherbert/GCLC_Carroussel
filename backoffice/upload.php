@@ -69,7 +69,7 @@ if(isset($_FILES["upload"]["tmp_name"])){
     imagejpeg($thumb1,"../img/slideshow/big".$fileWithoutExtension.'.jpg');
     imagejpeg( $thumb2,"../img/slideshow/small".$fileWithoutExtension.'.jpg');
 
-    $file = fopen ("../img/slideshow/".$fileWithoutExtension.".prop", "a");
+    $file = fopen ("../img/slideshow/".$fileWithoutExtension.".prop", "w");
 
     fwrite($file, "Description=".htmlspecialchars($_POST["comment"]));
     fclose($file);
