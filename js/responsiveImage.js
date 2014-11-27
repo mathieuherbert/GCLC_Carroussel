@@ -20,6 +20,7 @@ function loadImage(){
       tabProperties[i] = filesJSON[i][key];
     }
   }
+  $("#numImgTotal").text(tabImages.length);
 }
 
 function integrateImage(){
