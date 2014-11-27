@@ -28,11 +28,11 @@ function integrateImage(){
     if(indexImage == 0){
       //Ajout après le ul
 
-      $("#slideshow ul").append("<li><img src='img/slideshow/"+imgName+"'></li>");
+      $("#slides").append("<li><img src='img/slideshow/"+imgName+"'></li>");
     }
     else{
       //Ajout après l'image précédente
-      $("#slideshow ul li:last").after("<li><img src='img/slideshow/"+imgName+"'/></li>");
+      $("#slides li:last").after("<li><img src='img/slideshow/"+imgName+"'/></li>");
     }
     indexImage++;
     integrateImage();
