@@ -108,3 +108,38 @@ li{
 #bottomSlides{
     margin-bottom: 30px;
 }
+
+.playButton{
+  display:block;
+  width:55px;
+  height:55px;
+  border:0px;
+  padding:0px;
+
+  background: url("../img/sprites/sprite-square.png") 0 0 no-repeat;
+  background-position:0 0px;
+}
+
+.pauseButton{
+  display:block;
+  width:55px;
+  height:55px;
+  border:0px;
+  padding:0px;
+
+  background: url("../img/sprites/sprite-square.png") 0 0 no-repeat;
+  background-position:-55px 0px;
+}
+#play{
+    display: inline;
+
+    top : 10%;
+    display: block;
+    position: absolute;
+    width: 95%;
+}
+
+#playButton{
+    display: inline;
+    float: right;
+}
