@@ -52,8 +52,6 @@ module.exports = function (grunt) {
           {expand: true, src: ['backoffice/*'],
             dest: 'dest', filter: 'isFile'},
           {expand: true, src: ['frontend/*'],
-            dest: 'dest'},
-          {expand: true, src: ['.htaccess'],
             dest: 'dest'}
         ],
       },
