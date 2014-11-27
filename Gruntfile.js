@@ -82,7 +82,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('default', [
   'uglify',
-  'htmlmin',
+  //'htmlmin',
   'cssmin',
   'copy'
   ]);
