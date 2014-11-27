@@ -19,21 +19,21 @@ module.exports = function (grunt) {
       }
     },
 
-    htmlmin: {
-      dist: {
-        options: {
-          collapseWhitespace: true,
-          collapseBooleanAttributes: true,
-          removeCommentsFromCDATA: true,
-          removeOptionalTags: true
-        },
-        files: [{
-          expand: true,
-          src: ['index.html'],
-          dest: 'dest'
-        }]
-      }
-    },
+    //htmlmin: {
+    //  dist: {
+    //    options: {
+    //      collapseWhitespace: true,
+    //      collapseBooleanAttributes: true,
+    //      removeCommentsFromCDATA: true,
+    //      removeOptionalTags: true
+    //    },
+    //    files: [{
+    //      expand: true,
+    //      src: ['index.html'],
+    //      dest: 'dest'
+    //    }]
+    //  }
+    //},
 
     copy: {
       main: {
