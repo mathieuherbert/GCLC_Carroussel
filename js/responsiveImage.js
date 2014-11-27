@@ -29,10 +29,12 @@ function integrateImage(){
       //Ajout après le ul
 
       $("#slides").append("<li><img src='img/slideshow/"+imgName+"'></li>");
+      $("#comments").append("<span>"+tabProperties[indexImage]+"</span>");
     }
     else{
-      //Ajout après l'image précédente
+      //Ajout après l'image suivantes
       $("#slides li:last").after("<li><img style='display:none' src='img/slideshow/"+imgName+"'/></li>");
+      $("#comments span:last").after("<span style='display:none'>"+tabProperties[indexImage]+"</span>");
     }
     indexImage++;
     //integrateImage();
