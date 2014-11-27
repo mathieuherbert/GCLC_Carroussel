@@ -40,7 +40,7 @@ module.exports = function (grunt) {
         files: [
         // Copies files from the source folder to your local Apache folder
         {expand: true, src: ['css/*.min.css'],
-        dest: 'dest/'},
+        dest: 'dest'},
         {expand: true, src: ['img/*'],
         dest: 'dest/', filter: 'isFile'},
         {expand: true, src: ['img/**'],
