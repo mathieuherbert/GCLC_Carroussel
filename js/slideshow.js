@@ -1,3 +1,5 @@
+
+
 function swapSlides(id){
   i = id;
   window.clearTimeout(timeOutSlide);
@@ -170,6 +172,53 @@ function launchSwipe(el,d) {
     prev();
   }
 }
+function clientSideInclude(id, url) {
+    var req = false;
+    // For Safari, Firefox, and other non-MS browsers
+    if (window.XMLHttpRequest) {
+        try {
+            req = new XMLHttpRequest();
+        } catch (e) {
+            req = false;
+        }
+    } else if (window.ActiveXObject) {
+        // For Internet Explorer on Windows
+        try {
+            req = new ActiveXObject("Msxml2.XMLHTTP");
+        } catch (e) {
+            try {
+                req = new ActiveXObject("Microsoft.XMLHTTP");
+            } catch (e) {
+                req = false;
+            }
+        }
+    }
+    var element = document.getElementById(id);
+    if (!element) {
+        alert("Bad id " + id +
+            "passed to clientSideInclude." +
+            "You need a div or span element " +
+            "with this id in your page.");
+        return;
+    }
+    if (req) {
+        // Synchronous request, wait till we have it all
+        req.open('GET', url, false);
+        req.send(null);
+        element.innerHTML = req.responseText;
+    } else {
+        element.innerHTML =
+            "Sorry, your browser does not support " +
+                "XMLHTTPRequest objects. This page requires " +
+                "Internet Explorer 5 or better for Windows, " +
+                "or Firefox for any system, or Safari. Other " +
+                "compatible browsers may also exist.";
+    }
+}
+
+
+
+
 
 
 $(document).ready(function(){
@@ -205,9 +254,12 @@ $(document).ready(function(){
     detectswipe('slides',launchSwipe);
 
 }
+    clientSideInclude("twitter-div", "twitter.html");
+    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
   loadImage();
   integrateImage();
   test();
   funcTimeOutAddSlide();
   funcTimeOutSlide();
+
 });
