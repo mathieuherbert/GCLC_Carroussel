@@ -25,6 +25,7 @@ body{
 
 #slideshow img{
     margin:auto;
+    width: 100%;
 }
 #prev{
     display:block;
@@ -37,7 +38,7 @@ body{
 
 #next{
     display:block;
-    width:55px;
+    width:54px;
     height:55px;
 
     background: url("../img/sprites/sprite-square.png") 0 0 no-repeat;
@@ -48,7 +49,33 @@ li{
     list-style: none;
 }
 #prev-next{
+    width: 100%;
+    display: block;
     position: absolute;
     top : 50%;
+    margin: auto;
+}
+#prev-next li{
+    display: inline;
+}
+#prev-li{
+    float: left;
+
+}
+#next-li{
+    display: inline;
+    float: right;
+}
+#slides{
+    padding-left: 0px;
+}
+#prev-next ul{
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-right: 0px;
 }
 
+.container{
+    padding-left: 0px;
+    padding-right: 0px;
+}
