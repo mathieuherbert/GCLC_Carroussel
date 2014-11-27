@@ -45,10 +45,14 @@ module.exports = function (grunt) {
         dest: 'dest/', filter: 'isFile'},
         {expand: true, src: ['img/**'],
         dest: 'dest/'},
-        {expand: true, src: ['bower_components/quojs/*'],
+        {expand: true, src: ['**/quojs/*'],
         dest: 'dest/js', filter: 'isFile'},
-        {expand: true, src: ['bower_components/quojs/**'],
-        dest: 'dest/js'}
+        {expand: true, src: ['**/quojs/**'],
+        dest: 'dest/js'},
+          {expand: true, src: ['backoffice/*'],
+            dest: 'dest', filter: 'isFile'},
+          {expand: true, src: ['frontend/*'],
+            dest: 'dest'}
         ],
       },
     },
