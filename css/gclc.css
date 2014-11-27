@@ -22,11 +22,22 @@ body{
     left:0;
     list-style:none;
 }
-
-#slideshow img{
-    margin:auto;
-    width: 100%;
+#slides img{
+  margin:auto;
+  width: 100%;
 }
+
+#slides img{
+
+    -webkit-transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -o-transition: opacity 1s ease-in-out;
+    transition: opacity 1s ease-in-out;
+    opacity:0;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+}
+
 #prev{
     display:block;
     width:55px;
@@ -131,8 +142,8 @@ li{
   background-position:-55px 0px;
 }
 
-#imagesTransition1 img {
-  opacity: 0;/* l'opacite que vous voulez au depart */
+#imagesTransition1 span img {
+  opacity: 1;/* l'opacite que vous voulez au depart */
   border: none;/* enlever les border d'une image en lien */
   -ms-filter: "prodig:DXImageTransform.Microsoft.Alpha(Opacity=25)"; /* Hack IE8 */
   filter: alpha(opacity = 25); /* Hack IE 5-7 */
@@ -140,7 +151,16 @@ li{
   -moz-transition: opacity 0.5s ease-in-out;/* transition pour Firefox */
   -o-transition: opacity 0.5s ease-in-out;/* transition pour Opéra */
   transition: opacity 0.5s ease-in-out; /* on écrit cette ligne à la fin de façon à ce que ce soit elle qui soit prise en compte lorsque l'attribut transition sera pris en compte par tous les navigateurs */
+}
 
+
+#block span img {
+  display:block;
+  opacity:1;
+}
+
+#none span img {
+  display:none;
 }
 
 #play{
@@ -155,4 +175,56 @@ li{
 #playButton{
     display: inline;
     float: right;
+}
+
+#slides img span{
+  -webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+  opacity:0;
+  -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+}
+
+.opaque{
+  opacity:1;
+  -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: alpha(opacity=1);
+}
+
+@-webkit-keyframes zoomIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(.3, .3, .3);
+    transform: scale3d(.3, .3, .3);
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(.3, .3, .3);
+    transform: scale3d(.3, .3, .3);
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.zoomIn {
+  -webkit-animation-name: zoomIn;
+  animation-name: zoomIn;
+}
+
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
 }

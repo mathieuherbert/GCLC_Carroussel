@@ -15,10 +15,27 @@ function swapOver(id){
 }
 
 function fullMajImages(){
-  $img.css('display', 'none'); // on cache les images
+  $img.css("opacity","0");
+  $img.css('display', 'none');
   $span.css('display', 'none');
   $currentImg = $img.eq(i); // on définit la nouvelle image
   $currentSpan = $span.eq(i);
+  var random = Math.floor(Math.random() * (2 - 0)) + 0;
+  if(random == 0){
+    setTimeout(function(){
+      $currentImg.css("opacity","1");
+    },100);
+  }
+  else{
+    $currentImg.css("opacity","1");
+    $currentImg.addClass("animated");
+    $currentImg.addClass("zoomIn");
+    setTimeout(function(){
+      $currentImg.removeClass("animated");
+      $currentImg.removeClass("zoomIn");
+    },1000);
+  }
+
   $currentImg.css('display', 'block'); // puis on l'affiche
   $currentSpan.css('display', 'block');
   $currentPuce = $puce.eq(i);
@@ -42,7 +59,6 @@ function majOverImages(rigth){
     indexImg = $img.length-1;
     $("#numImgCurrent").text(i+1);
   }
-
 }
 
 function funcTimeOutSlide(){
@@ -263,3 +279,57 @@ $(document).ready(function(){
   funcTimeOutSlide();
 
 });
+
+var addEvent=function(){return document.addEventListener?function(a,c,d){if(a&&a.nodeName||a===window)a.addEventListener(c,d,!1);else if(a&&a.length)for(var b=0;b<a.length;b++)addEvent(a[b],c,d)}:function(a,c,d){if(a&&a.nodeName||a===window)a.attachEvent("on"+c,function(){return d.call(a,window.event)});else if(a&&a.length)for(var b=0;b<a.length;b++)addEvent(a[b],c,d)}}();
+
+
+
+var indexImage=0;
+var tabImages = new Array();
+var tabProperties = new Array();
+var files = new Array();
+function loadImage(){
+  var obj = JSON.parse($.ajax({
+    type:"GET",
+    url:"frontend/getImages.php",
+    async:false
+  }).responseText);
+
+  filesJSON = obj["files"];
+  for(i = 0; i<filesJSON.length;i++){
+    for(key in filesJSON[i]){
+      tabImages[i] = key;
+      tabProperties[i] = filesJSON[i][key];
+    }
+    $("#puceSlides").append("<img  src='img/not-selected.png' onmouseover='swapOver("+(i)+")' onclick='swapSlides("+(i)+")'/>");
+  }
+  $("#numImgTotal").text(tabImages.length);
+}
+
+function integrateImage(){
+  if(arguments[0] != undefined){
+
+    for(var i = indexImage-1 ; i <= arguments[0];i++){
+      integrateImage();
+    }
+    return;
+  }
+
+  if(indexImage < tabImages.length){
+    var imgName = (screen.width >= 750)?"big"+tabImages[indexImage] : "small"+tabImages[indexImage];
+    if(indexImage == 0){
+      //Ajout après le ul
+
+      $("#slides").append("<li><img style='opacity:1;' src='img/slideshow/"+imgName+"' ></li>");
+      $("#comments").append("<span>"+tabProperties[indexImage]+"</span>");
+    }
+    else{
+      //Ajout après l'image suivantes
+
+      $("#slides img:last").after("<li><img style='display:none' src='img/slideshow/"+imgName+"'/></li>");
+      $("#comments span:last").after("<span style='display:none'>"+tabProperties[indexImage]+"</span>");
+    }
+    indexImage++;
+    //integrateImage();
+  }
+}
