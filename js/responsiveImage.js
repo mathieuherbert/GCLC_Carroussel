@@ -19,6 +19,7 @@ function loadImage(){
       tabImages[i] = key;
       tabProperties[i] = filesJSON[i][key];
     }
+    $("#puceSlides").append("<img id='"+(filesJSON.length -1 - i)+"' src='img/not-selected.png'/>")
   }
   $("#numImgTotal").text(tabImages.length);
 }
