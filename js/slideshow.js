@@ -64,6 +64,7 @@ function majOverImages(rigth){
 function funcTimeOutSlide(){
   if(isPlaying){
     timeOutSlide = setTimeout(function(){ // on utilise une fonction anonyme
+        console.log(new Date(Date.now()));
       addSlide();
       i = (i<indexImg)?i+1:0;
 
@@ -104,10 +105,10 @@ function play(){
     $(".play").css("display","none");
     $(".pause1").css("display","block");
     $(".pause2").css("display","block");
-    timeOutSlide = setTimeout(function(){ // on utilise une fonction anonyme
+      console.log(new Date(Date.now()));
+      isPlaying = true;
       funcTimeOutSlide();
-    }, 3000);
-    isPlaying = true;
+
   }
   else{
     $("#playButton").attr("class","playButton");
