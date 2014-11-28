@@ -263,7 +263,7 @@ function loadImage(){
       tabImages[i] = key;
       tabProperties[i] = filesJSON[i][key];
     }
-    $("#puceSlides").append("<div class='button' onmouseover='swapOver("+(i)+")' onclick='swapSlides("+(i)+")'>");
+    $("#puceSlides").append("<div class='puceButton' onmouseover='swapOver("+(i)+")' onclick='swapSlides("+(i)+")'>");
   }
   $("#numImgTotal").text(tabImages.length);
 }
