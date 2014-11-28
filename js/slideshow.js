@@ -62,22 +62,22 @@ function majOverImages(rigth){
 }
 
 function funcTimeOutSlide(){
+  if(isPlaying){
+    timeOutSlide = setTimeout(function(){ // on utilise une fonction anonyme
+      i = (i<indexImg)?i+1:0;
 
-  timeOutSlide = setTimeout(function(){ // on utilise une fonction anonyme
-    i = (i<indexImg)?i+1:0;
+      fullMajImages();
 
-    fullMajImages();
+      funcTimeOutSlide(); // on oublie pas de relancer la fonction à la fin
 
-    funcTimeOutSlide(); // on oublie pas de relancer la fonction à la fin
-
-    // if(indexImg < (tabImages.length-1)){
-    //   funcTimeOutAddSlide();
-    // }
-  }, 3000); // on définit l'intervalle à 7000 millisecondes (7s)ss
+      // if(indexImg < (tabImages.length-1)){
+      //   funcTimeOutAddSlide();
+      // }
+    }, 3000); // on définit l'intervalle à 7000 millisecondes (7s)ss
+  }
 }
 
 function funcTimeOutAddSlide(){
-  console.log(new Date(Date.now()));
   time = ($typeScreen)?2500:500;
   timeOutLoading = setTimeout(function(){
       integrateImage();
@@ -127,10 +127,12 @@ function play(){
     timeOutSlide = setTimeout(function(){ // on utilise une fonction anonyme
       funcTimeOutSlide();
     }, 3000);
+    isPlaying = true;
   }
   else{
     $("#playButton").attr("class","playButton");
     window.clearTimeout(timeOutSlide);
+    isPlaying = false;
   }
 }
 
@@ -283,7 +285,7 @@ $(document).ready(function(){
 var addEvent=function(){return document.addEventListener?function(a,c,d){if(a&&a.nodeName||a===window)a.addEventListener(c,d,!1);else if(a&&a.length)for(var b=0;b<a.length;b++)addEvent(a[b],c,d)}:function(a,c,d){if(a&&a.nodeName||a===window)a.attachEvent("on"+c,function(){return d.call(a,window.event)});else if(a&&a.length)for(var b=0;b<a.length;b++)addEvent(a[b],c,d)}}();
 
 
-
+isPlaying = true;
 var indexImage=0;
 var tabImages = new Array();
 var tabProperties = new Array();
