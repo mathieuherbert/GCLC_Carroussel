@@ -115,7 +115,7 @@ if(isset($_FILES["upload"]["tmp_name"])){
                           <button type="submit" class="btn btn-default">Submit</button>
                         </form>
                     </div>
-                    <a href="/8dffb9edbf/">Retournez a la page d'accueil</a>
+                    <a href="/8dffb9edbf/">Retourner &agrave; la page d'accueil</a>
                 </div>
             </div>
         </div>
