@@ -64,6 +64,7 @@ function majOverImages(rigth){
 function funcTimeOutSlide(){
   if(isPlaying){
     timeOutSlide = setTimeout(function(){ // on utilise une fonction anonyme
+      addSlide();
       i = (i<indexImg)?i+1:0;
 
       fullMajImages();
@@ -76,36 +77,12 @@ function funcTimeOutSlide(){
     }, 3000); // on définit l'intervalle à 7000 millisecondes (7s)ss
   }
 }
-
-function funcTimeOutAddSlide(){
-  // time = ($typeScreen)?2500:500;
-  timeOutLoading = setTimeout(function(){
-      integrateImage();
-      $img = $('#slides img');
-      $span = $('#comments span');
-      indexImg = $img.length-1;
-      if(indexImg < (tabImages.length-1)){
-        funcTimeOutAddSlide();
-      }
-  },2500);
+function addSlide(){
+    integrateImage();
+    $img = $('#slides img');
+    $span = $('#comments span');
+    indexImg = $img.length-1;
 }
-
-// function slideImg(){
-//   console.log(new Date(Date.now()));
-//   time = ($typeScreen)?2500:500;
-//   timeOutLoading = setTimeout(function(){
-//     if(indexImg < (tabImages.length-1)){
-//       integrateImage();
-//       $img = $('#slides img');
-//       $span = $('#comments span');
-//       indexImg = $img.length-1;
-//     }
-//   },time);
-//
-//   timeOutSlide = setTimeout(function(){ // on utilise une fonction anonyme
-//     funcTimeOutSlide();
-//   }, 3000); // on définit l'intervalle à 7000 millisecondes (7s)
-// }
 
 function next(){
   i++; // on incrémente le compteur
@@ -258,12 +235,11 @@ $(document).ready(function(){
     detectswipe('slides');
 
 }
-    clientSideInclude("bas_text", "twitter.html");
+    clientSideInclude("global", "twitter.html");
     !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
   loadImage();
   integrateImage();
   test();
-  funcTimeOutAddSlide();
   funcTimeOutSlide();
 
 });
@@ -316,6 +292,5 @@ function integrateImage(){
       $("#comments span:last").after("<span style='display:none'>"+tabProperties[indexImage]+"</span>");
     }
     indexImage++;
-    //integrateImage();
   }
 }
