@@ -259,6 +259,7 @@ function loadImage(){
 
   if(obj["size"] == "0"){
     tabImages[0] = "img/default/"+((screen.width >= 750)?"big" : "small")+"Img1.jpg";
+      tabProperties[0] = "Bienvenue sur le carrousel FILanthropes, vous n'avez pas d'image ;)";
     $("#puceSlides").append("<div class='puceButton' onmouseover='swapOver(0)' onclick='swapSlides(0)'>");
     console.log(  tabImages[0]);
   }
