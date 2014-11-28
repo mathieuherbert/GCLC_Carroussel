@@ -24,7 +24,8 @@ body{
 }
 #slides img{
   margin:auto;
-  width: 100%;
+  width: auto;
+    height: auto;
 }
 
 #slides img{
