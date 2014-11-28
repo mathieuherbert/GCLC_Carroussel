@@ -142,6 +142,23 @@ li{
   background-position:-66px -11px;
 }
 
+.button{
+    display: inline-block;
+    position: relative;
+    width:1em;
+    height:1em;
+    margin: 5px;
+    padding: 5 5px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    background:#020202;
+}
+
+.selected{
+    background:#3c763d;
+}
+
 #imagesTransition1 span img {
   opacity: 1;/* l'opacite que vous voulez au depart */
   border: none;/* enlever les border d'une image en lien */
