@@ -25,8 +25,8 @@ else
     mogrify -format jpeg *.png
     rm *.png
 
-    gm mogrify -resize 900x360\< -output-directory 900 *.jpg
-    gm mogrify -resize 320x128\< -output-directory 320 *.jpg
+    gm mogrify -resize 900x360\^ -output-directory 900 *.jpg
+    gm mogrify -resize 320x128\^ -output-directory 320 *.jpg
 
     cp *.prop /var/www/8dffb9edbf/img/slideshow/
 
