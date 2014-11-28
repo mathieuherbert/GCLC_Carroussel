@@ -256,13 +256,18 @@ function loadImage(){
     url:"frontend/getImages.php",
     async:false
   }).responseText);
-
-  filesJSON = obj["files"];
-  for(i = 0; i<filesJSON.length;i++){
-    for(key in filesJSON[i]){
-      tabImages[i] = key;
-      tabProperties[i] = filesJSON[i][key];
-    }
+  if(obj["size"] == "0"){
+    tabImages[0] = "img/default/"+((screen.width >= 750)?"big"+tabImages[indexImage] : "small")+Img1.jpg;
+  }
+  else{
+    filesJSON = obj["files"];
+    for(i = 0; i<filesJSON.length;i++){
+      for(key in filesJSON[i]){
+        tabImages[i] = "img/slideshow/"+((screen.width >= 750)?"big"+tabImages[indexImage] : "small")+key;
+        console.log(  tabImages[i]);
+        tabProperties[i] = filesJSON[i][key];
+      }
+  }
     $("#puceSlides").append("<div class='button' onmouseover='swapOver("+(i)+")' onclick='swapSlides("+(i)+")'>");
   }
   $("#numImgTotal").text(tabImages.length);
@@ -278,17 +283,17 @@ function integrateImage(){
   }
 
   if(indexImage < tabImages.length){
-    var imgName = (screen.width >= 750)?"big"+tabImages[indexImage] : "small"+tabImages[indexImage];
+    //var imgName = (screen.width >= 750)?"big"+tabImages[indexImage] : "small"+tabImages[indexImage];
     if(indexImage == 0){
       //Ajout après le ul
 
-      $("#slides").append("<li><img style='opacity:1;' src='img/slideshow/"+imgName+"' ></li>");
+      $("#slides").append("<li><img style='opacity:1;' src='"+tabImages[indexImage]+"' ></li>");
       $("#comments").append("<span>"+tabProperties[indexImage]+"</span>");
     }
     else{
       //Ajout après l'image suivantes
 
-      $("#slides img:last").after("<li><img style='display:none' src='img/slideshow/"+imgName+"'/></li>");
+      $("#slides img:last").after("<li><img style='display:none' src='"+tabImages[indexImage]+"'/></li>");
       $("#comments span:last").after("<span style='display:none'>"+tabProperties[indexImage]+"</span>");
     }
     indexImage++;
