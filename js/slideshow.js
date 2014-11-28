@@ -78,7 +78,7 @@ function funcTimeOutSlide(){
 }
 
 function funcTimeOutAddSlide(){
-  time = ($typeScreen)?2500:500;
+  // time = ($typeScreen)?2500:500;
   timeOutLoading = setTimeout(function(){
       integrateImage();
       $img = $('#slides img');
@@ -87,7 +87,7 @@ function funcTimeOutAddSlide(){
       if(indexImg < (tabImages.length-1)){
         funcTimeOutAddSlide();
       }
-  },time);
+  },2500);
 }
 
 // function slideImg(){
