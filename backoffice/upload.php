@@ -9,8 +9,6 @@
     <title>Green Code Lab Challenge 2014 sample webpage</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
     <!-- This is a nice empty css. Feel free to override the theme! -->
     <link href="../css/gclc.css" rel="stylesheet">
@@ -43,7 +41,7 @@
 ini_set('display_errors', 'on');
 
 if(isset($_FILES["upload"]["tmp_name"])){
-    list($sourceWidth, $sourceHeight) = getimagesize($_FILES["upload"]["tmp_name"]);
+    list($sourceWidth, $sourceHeight, $sourceType) = getimagesize($_FILES["upload"]["tmp_name"]);
     $optimalWidthBig = 900;
     $optimalWidthSmall = 320;
 
@@ -53,18 +51,21 @@ if(isset($_FILES["upload"]["tmp_name"])){
     $fileWithoutExtension = substr($_FILES["upload"]["name"],0,strrpos($_FILES["upload"]["name"],"."));
     $extension = strtolower( substr($_FILES["upload"]["name"], strrpos($_FILES["upload"]["name"], ".") + 1, strlen($_FILES["upload"]["name"])) );
 
-    if ( $extension == "jpg" || $extension == "jpeg" ) {
-        $source = imagecreatefromjpeg($_FILES["upload"]["tmp_name"]);
-    }
-    else if ( $extension == "png" ) {
-        $source = imagecreatefrompng($_FILES["upload"]["tmp_name"]);
-    }
-    else {
-        echo "<h3 class='text-align'>Seul les jpg et png sont acceptés !</h3>";
+    switch ($sourceType) {
+        case IMAGETYPE_GIF:
+            $source = imagecreatefromgif($_FILES["upload"]["tmp_name"]);
+            break;
+        case IMAGETYPE_JPEG:
+            $source = imagecreatefromjpeg($_FILES["upload"]["tmp_name"]);
+            break;
+        case IMAGETYPE_PNG:
+            $source = imagecreatefrompng($_FILES["upload"]["tmp_name"]);
+            break;
+        default:
+            echo "<h3 class='text-align'>Seul les jpg, gif et png sont acceptés !</h3>";
     }
 
     $source_aspect_ratio = $sourceWidth / $sourceHeight;
-    $thumbnail_aspect_ratio = $optimalWidthBig / $optimalHeightBig;
 
     if ($source_aspect_ratio < 1) {
         $proportionalChanges = $sourceHeight / $optimalHeightBig;
@@ -75,7 +76,7 @@ if(isset($_FILES["upload"]["tmp_name"])){
         $thumbnail_image_height_small = $optimalHeightSmall;
         $thumbnail_image_width_small = $sourceWidth / $proportionalChanges;
     } else {
-        $proportionalChanges = $sourceHeight / $optimalHeightBig;
+        $proportionalChanges = $sourceWidth / $optimalWidthBig;
 
         $thumbnail_image_height_big = $sourceHeight / $proportionalChanges;
         $thumbnail_image_width_big = $optimalWidthBig;
