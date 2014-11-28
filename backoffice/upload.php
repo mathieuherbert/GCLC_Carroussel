@@ -22,6 +22,7 @@
 <nav class="navbar glc-navbar navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
+            <img src="img/Filanthropes-compressed.png" width="45" style="float: left;"/>
             <img src="../img/logo.png" width="62" style="float: left;" />
             <a class="navbar-brand">GreenCodeLab Challenge 2014</a>
         </div>
@@ -90,7 +91,8 @@ if(isset($_FILES["upload"]["tmp_name"])){
                           </div>
                           <button type="submit" class="btn btn-default">Submit</button>
                         </form>
-                    </div>  
+                    </div>
+                    <a href="/">Retournez a la page d'accueil</a>
                 </div>
             </div>
         </div>
