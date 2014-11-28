@@ -39,8 +39,8 @@ function fullMajImages(){
   $currentImg.css('display', 'block'); // puis on l'affiche
   $currentSpan.css('display', 'block');
   $currentPuce = $puce.eq(i);
-  $puce.attr("src","img/not-selected.png");
-  $currentPuce.attr("src","img/selected.png");
+  $puce.removeClass("selected");
+  $currentPuce.addClass("selected");
   $("#numImgCurrent").text(i+1);
 }
 
@@ -208,7 +208,7 @@ $(document).ready(function(){
      $slideshow =  $('#slideshow'); // on cible le bloc du slideshow
      $img = $('#slides img'); // on cible les images contenues dans le slideshow
      $span = $('#comments span');// on cible les span contenues dans le slideshow
-     $puce = $('#puceSlides img');
+     $puce = $('#puceSlides div');
      indexImg = $img.length - 1; // on définit l'index du dernier élément
      i = 0; // on initialise un compteur
      $currentImg = $img.eq(i); // enfin, on cible l'image courante, qui possède l'index i (0 pour l'instant)
@@ -217,8 +217,8 @@ $(document).ready(function(){
 
     $img.css('display', 'none'); // on cache les images
     $currentImg.css('display', 'block'); // on affiche seulement l'image courante
-    $puce.attr("src","img/not-selected.png");
-    $currentPuce.attr("src","img/selected.png");
+    $puce.removeClass("selected");
+    $currentPuce.addClass("selected");
 
     $('#next').mouseover(function(){
       if(indexImg < (tabImages.length-1) && i == indexImg){
@@ -235,7 +235,7 @@ $(document).ready(function(){
     detectswipe('slides');
 
 }
-    clientSideInclude("bas_text", "twitter.html");
+    clientSideInclude("global", "twitter.html");
     !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
   loadImage();
   integrateImage();
@@ -263,7 +263,7 @@ function loadImage(){
       tabImages[i] = key;
       tabProperties[i] = filesJSON[i][key];
     }
-    $("#puceSlides").append("<img  src='img/not-selected.png' onmouseover='swapOver("+(i)+")' onclick='swapSlides("+(i)+")'/>");
+    $("#puceSlides").append("<div class='button' onmouseover='swapOver("+(i)+")' onclick='swapSlides("+(i)+")'>");
   }
   $("#numImgTotal").text(tabImages.length);
 }

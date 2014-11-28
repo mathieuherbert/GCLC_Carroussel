@@ -29,7 +29,7 @@ module.exports = function (grunt) {
         },
         files: [{
           expand: true,
-          src: ['index.html'],
+          src: ['index.html', 'twitter.html'],
           dest: 'dest'
         }]
       }
@@ -54,8 +54,6 @@ module.exports = function (grunt) {
           {expand: true, src: ['frontend/*'],
             dest: 'dest'},
           {expand: true, src: ['updateImages.sh'],
-            dest: 'dest'},
-          {expand: true, src: ['twitter.html'],
             dest: 'dest'}
         ],
       },
