@@ -9,8 +9,6 @@
     <title>Green Code Lab Challenge 2014 sample webpage</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/bootstrap-theme.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
     <!-- This is a nice empty css. Feel free to override the theme! -->
     <link href="../css/gclc.css" rel="stylesheet">
