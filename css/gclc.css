@@ -44,12 +44,11 @@ body{
     height:55px;
 
     background:#ffffff;
-    background-position:0 -110px;
 }
 
 #prev span{
     position: absolute;
-    margin: 18% 30%;
+    margin: 15% 40%;
     font-size: 26px;
 
 }
@@ -57,16 +56,15 @@ body{
 #next{
     display:block;
     position: relative;
-    width:54px;
+    width:55px;
     height:55px;
 
     background:#ffffff;
-    background-position:0 -55px;
 }
 
 #next span{
     position: absolute;
-    margin: 18% 40%;
+    margin: 15% 45%;
     font-size: 26px;
 }
 
@@ -164,13 +162,13 @@ li{
 
 .pause1{
     position: absolute;
-    margin: 15% 30%;
+    margin: 15% 35%;
     font-size: 15px;
 }
 
 .pause2{
     position: absolute;
-    margin: 15% 50%;
+    margin: 15% 55%;
     font-size: 15px;
 }
 
