@@ -72,16 +72,16 @@ if(isset($_FILES["upload"]["tmp_name"])){
         $thumbnail_image_height_big = $optimalHeightBig;
         $thumbnail_image_width_big = $sourceWidth / $proportionalChanges;
 
-        $thumbnail_image_width_small = (int) ($optimalWidthSmall * $source_aspect_ratio);
         $thumbnail_image_height_small = $optimalHeightSmall;
+        $thumbnail_image_width_small = $sourceWidth / $proportionalChanges;
     } else {
         $proportionalChanges = $sourceHeight / $optimalHeightBig;
 
         $thumbnail_image_height_big = $sourceHeight / $proportionalChanges;
         $thumbnail_image_width_big = $optimalWidthBig;
 
+        $thumbnail_image_height_small = $sourceHeight / $proportionalChanges;
         $thumbnail_image_width_small = $optimalWidthSmall;
-        $thumbnail_image_height_small = (int) ($optimalHeightSmall / $source_aspect_ratio);
     }
 
     $thumb1 = imagecreatetruecolor($thumbnail_image_width_big, $thumbnail_image_height_big);
