@@ -64,6 +64,7 @@ function majOverImages(rigth){
 function funcTimeOutSlide(){
   if(isPlaying){
     timeOutSlide = setTimeout(function(){ // on utilise une fonction anonyme
+      addSlide();
       i = (i<indexImg)?i+1:0;
 
       fullMajImages();
@@ -76,8 +77,15 @@ function funcTimeOutSlide(){
     }, 3000); // on définit l'intervalle à 7000 millisecondes (7s)ss
   }
 }
+function addSlide(){
+    integrateImage();
+    $img = $('#slides img');
+    $span = $('#comments span');
+    indexImg = $img.length-1;
+}
 
 function funcTimeOutAddSlide(){
+  console.log("test");
   // time = ($typeScreen)?2500:500;
   timeOutLoading = setTimeout(function(){
       integrateImage();
@@ -277,7 +285,7 @@ $(document).ready(function(){
   loadImage();
   integrateImage();
   test();
-  funcTimeOutAddSlide();
+  //funcTimeOutAddSlide();
   funcTimeOutSlide();
 
 });
