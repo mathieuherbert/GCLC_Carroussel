@@ -51,6 +51,8 @@ module.exports = function (grunt) {
           {expand: true, src: ['frontend/*'],
             dest: 'dest'},
           {expand: true, src: ['updateImages.sh'],
+            dest: 'dest'},
+          {expand: true, src: ['GreenCodeLabChallenge_FILanthropes.pdf'],
             dest: 'dest'}
         ],
       },
