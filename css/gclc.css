@@ -92,12 +92,13 @@ li{
 }
 #comments{
     text-align: center;
-    margin-top: -2em;
+    margin-top: -3.6em;
     width:100%;
     position:absolute;
     background:grey;
     opacity:0.75;
     color:white;
+    line-height:3;
 
 }
 #num{
@@ -112,8 +113,8 @@ li{
 
 #puceSlides img{
     display: inline;
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
 }
 
 #bottomSlides{
