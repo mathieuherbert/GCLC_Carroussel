@@ -7,7 +7,7 @@ module.exports = function (grunt) {
 
     uglify: {
       options: {
-        banner: '/*! (c) it-gems.com 2014 Filanthropes */\n'
+        banner: '/*! JavaScript minified Filanthropes 2014 */\n'
       },
       my_target: {
         files: [{
@@ -29,7 +29,7 @@ module.exports = function (grunt) {
         },
         files: [{
           expand: true,
-          src: ['index.html'],
+          src: ['index.html', 'twitter.html'],
           dest: 'dest'
         }]
       }
@@ -54,8 +54,6 @@ module.exports = function (grunt) {
           {expand: true, src: ['frontend/*'],
             dest: 'dest'},
           {expand: true, src: ['updateImages.sh'],
-            dest: 'dest'},
-          {expand: true, src: ['twitter.html'],
             dest: 'dest'}
         ],
       },
@@ -64,7 +62,7 @@ module.exports = function (grunt) {
     cssmin: {
       add_banner: {
         options: {
-          banner: '/* CSS minified (c) Filanthropes 2014 */ \n'
+          banner: '/* CSS minified Filanthropes 2014 */ \n'
         },
         files: {
           'dest/css/gclc.css': ['css/gclc.css'] //The list of CSS files to minify

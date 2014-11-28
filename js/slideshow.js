@@ -39,8 +39,8 @@ function fullMajImages(){
   $currentImg.css('display', 'block'); // puis on l'affiche
   $currentSpan.css('display', 'block');
   $currentPuce = $puce.eq(i);
-  $puce.attr("src","img/not-selected.png");
-  $currentPuce.attr("src","img/selected.png");
+  $puce.removeClass("selected");
+  $currentPuce.addClass("selected");
   $("#numImgCurrent").text(i+1);
 }
 
@@ -62,50 +62,27 @@ function majOverImages(rigth){
 }
 
 function funcTimeOutSlide(){
+  if(isPlaying){
+    timeOutSlide = setTimeout(function(){ // on utilise une fonction anonyme
+      addSlide();
+      i = (i<indexImg)?i+1:0;
 
-  timeOutSlide = setTimeout(function(){ // on utilise une fonction anonyme
-    i = (i<indexImg)?i+1:0;
+      fullMajImages();
 
-    fullMajImages();
+      funcTimeOutSlide(); // on oublie pas de relancer la fonction à la fin
 
-    funcTimeOutSlide(); // on oublie pas de relancer la fonction à la fin
-
-    // if(indexImg < (tabImages.length-1)){
-    //   funcTimeOutAddSlide();
-    // }
-  }, 3000); // on définit l'intervalle à 7000 millisecondes (7s)ss
+      // if(indexImg < (tabImages.length-1)){
+      //   funcTimeOutAddSlide();
+      // }
+    }, 3000); // on définit l'intervalle à 7000 millisecondes (7s)ss
+  }
 }
-
-function funcTimeOutAddSlide(){
-  console.log(new Date(Date.now()));
-  time = ($typeScreen)?2500:500;
-  timeOutLoading = setTimeout(function(){
-      integrateImage();
-      $img = $('#slides img');
-      $span = $('#comments span');
-      indexImg = $img.length-1;
-      if(indexImg < (tabImages.length-1)){
-        funcTimeOutAddSlide();
-      }
-  },time);
+function addSlide(){
+    integrateImage();
+    $img = $('#slides img');
+    $span = $('#comments span');
+    indexImg = $img.length-1;
 }
-
-// function slideImg(){
-//   console.log(new Date(Date.now()));
-//   time = ($typeScreen)?2500:500;
-//   timeOutLoading = setTimeout(function(){
-//     if(indexImg < (tabImages.length-1)){
-//       integrateImage();
-//       $img = $('#slides img');
-//       $span = $('#comments span');
-//       indexImg = $img.length-1;
-//     }
-//   },time);
-//
-//   timeOutSlide = setTimeout(function(){ // on utilise une fonction anonyme
-//     funcTimeOutSlide();
-//   }, 3000); // on définit l'intervalle à 7000 millisecondes (7s)
-// }
 
 function next(){
   i++; // on incrémente le compteur
@@ -127,10 +104,12 @@ function play(){
     timeOutSlide = setTimeout(function(){ // on utilise une fonction anonyme
       funcTimeOutSlide();
     }, 3000);
+    isPlaying = true;
   }
   else{
     $("#playButton").attr("class","playButton");
     window.clearTimeout(timeOutSlide);
+    isPlaying = false;
   }
 }
 
@@ -144,17 +123,14 @@ function prev(){
   fullMajImages();
 }
 
-function detectswipe(el,func) {
+function detectswipe(el) {
   swipe_det = new Object();
   swipe_det.sX = 0;
   swipe_det.sY = 0;
   swipe_det.eX = 0;
   swipe_det.eY = 0;
   var min_x = 20;  //min x swipe for horizontal swipe
-  var max_x = 40;  //max x difference for vertical swipe
-  var min_y = 40;  //min y swipe for vertical swipe
   var max_y = 50;  //max y difference for horizontal swipe
-  var direc = "";
   ele = document.getElementById("slideshow");
   ele.addEventListener('touchstart',function(e){
     var t = e.touches[0];
@@ -170,24 +146,13 @@ function detectswipe(el,func) {
   ele.addEventListener('touchend',function(e){
     //horizontal detection
     if ((((swipe_det.eX - min_x > swipe_det.sX) || (swipe_det.eX + min_x < swipe_det.sX)) && ((swipe_det.eY < swipe_det.sY + max_y) && (swipe_det.sY > swipe_det.eY - max_y)))) {
-      if(swipe_det.eX > swipe_det.sX) direc = "r";
-      else direc = "l";
+      if(swipe_det.eX > swipe_det.sX) prev();
+      else next();
     }
 
-    if (direc != "") {
-      if(typeof func == 'function') func(el,direc);
-    }
-    direc = "";
   },false);
 }
 
-function launchSwipe(el,d) {
-  if (d == "l") {
-    next();
-  } else if (d == "r") {
-    prev();
-  }
-}
 function clientSideInclude(id, url) {
     var req = false;
     // For Safari, Firefox, and other non-MS browsers
@@ -243,7 +208,7 @@ $(document).ready(function(){
      $slideshow =  $('#slideshow'); // on cible le bloc du slideshow
      $img = $('#slides img'); // on cible les images contenues dans le slideshow
      $span = $('#comments span');// on cible les span contenues dans le slideshow
-     $puce = $('#puceSlides img');
+     $puce = $('#puceSlides div');
      indexImg = $img.length - 1; // on définit l'index du dernier élément
      i = 0; // on initialise un compteur
      $currentImg = $img.eq(i); // enfin, on cible l'image courante, qui possède l'index i (0 pour l'instant)
@@ -252,8 +217,8 @@ $(document).ready(function(){
 
     $img.css('display', 'none'); // on cache les images
     $currentImg.css('display', 'block'); // on affiche seulement l'image courante
-    $puce.attr("src","img/not-selected.png");
-    $currentPuce.attr("src","img/selected.png");
+    $puce.removeClass("selected");
+    $currentPuce.addClass("selected");
 
     $('#next').mouseover(function(){
       if(indexImg < (tabImages.length-1) && i == indexImg){
@@ -267,23 +232,20 @@ $(document).ready(function(){
       }
     });
 
-    detectswipe('slides',launchSwipe);
+    detectswipe('slides');
 
 }
-    clientSideInclude("bas_text", "twitter.html");
+    clientSideInclude("global", "twitter.html");
     !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
   loadImage();
   integrateImage();
   test();
-  funcTimeOutAddSlide();
   funcTimeOutSlide();
 
 });
 
-var addEvent=function(){return document.addEventListener?function(a,c,d){if(a&&a.nodeName||a===window)a.addEventListener(c,d,!1);else if(a&&a.length)for(var b=0;b<a.length;b++)addEvent(a[b],c,d)}:function(a,c,d){if(a&&a.nodeName||a===window)a.attachEvent("on"+c,function(){return d.call(a,window.event)});else if(a&&a.length)for(var b=0;b<a.length;b++)addEvent(a[b],c,d)}}();
 
-
-
+isPlaying = true;
 var indexImage=0;
 var tabImages = new Array();
 var tabProperties = new Array();
@@ -301,7 +263,7 @@ function loadImage(){
       tabImages[i] = key;
       tabProperties[i] = filesJSON[i][key];
     }
-    $("#puceSlides").append("<img  src='img/not-selected.png' onmouseover='swapOver("+(i)+")' onclick='swapSlides("+(i)+")'/>");
+    $("#puceSlides").append("<div class='puceButton' onmouseover='swapOver("+(i)+")' onclick='swapSlides("+(i)+")'>");
   }
   $("#numImgTotal").text(tabImages.length);
 }
@@ -330,6 +292,5 @@ function integrateImage(){
       $("#comments span:last").after("<span style='display:none'>"+tabProperties[indexImage]+"</span>");
     }
     indexImage++;
-    //integrateImage();
   }
 }

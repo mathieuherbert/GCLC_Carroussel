@@ -24,7 +24,6 @@ body{
 }
 #slides img{
   margin:auto;
-  width: 100%;
 }
 
 #slides img{
@@ -141,6 +140,23 @@ li{
 
   background: url("../img/sprites/sprite-square.png") 0 0 no-repeat;
   background-position:-66px -11px;
+}
+
+.puceButton{
+    display: inline-block;
+    position: relative;
+    width:1em;
+    height:1em;
+    margin: 5px;
+    padding: 5 5px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    background:#020202;
+}
+
+.selected{
+    background:#3c763d;
 }
 
 #imagesTransition1 span img {

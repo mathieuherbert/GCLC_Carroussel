@@ -1,42 +1,108 @@
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/bootstrap-theme.min.css" rel="stylesheet">
+<nav class="navbar glc-navbar navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <img src="img/Filanthropes-compressed.jpg" width="45" style="float: left;"/>
+            <img src="img/logo.png" width="62" style="float: left;"/>
+            <a class="navbar-brand">GreenCodeLab Challenge 2014</a>
+        </div>
+    </div>
+</nav>
 
-<link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
-<link href="css/gclc.css" rel="stylesheet">
+<div class="jumbotron">
 
 
-<div class="col-md-4">
-    <h2>Who will be the best Green developer in this latest edition ? </h2>
-    <p>
-        Eco-design software, is new. Your mission in the month before the contest
-        is to make a short video explaining to a general public the impact of the software. you then publish
-        this video on the networks. The most viral video will be rewarded and will bring you points in the final standings.
-    </p>
+    <div class="container">
+        <h1>Hello, world!</h1>
+        <p>Welcome on board! This is your sample website. Fell free to add / correct what you want.
+        <p>Please do not delete any sentence included in this webpage</p>
+        <h2>Team FILAnthropes !!</h2>
+        <p>Vous pouvez Uploader une photo (10MB max) <a href="backoffice/upload.php">ici</a>
+        <p>Deux transitions sont effectives sur le site. Elles apparaissent al&eacute;atoirement.</p>
+    </div>
 </div>
-<div class="col-md-4">
-    <h2>On your marks, Ready, Set, CODE !</h2>
+<div class="container">
+    <div id="slideshow" style="max-width: 900px">
+        <ul id="slides">
+        </ul>
+        <div id="play">
+            <button id="playButton" class="pauseButton" onclick="play();"/>
+        </div>
+        <div id="prev-next">
+            <ul>
+                <li id="prev-li"><div id="prev" onclick='prev();'></div></li>
+                <li id="next-li"><div id="next" onclick='next();'></div></li>
+            </ul>
+        </div>
 
-    <p>The Green Code Lab Challenge is a unique opportunity for you to to develop your skills set in ECO-CONCEPTION.<br>
-        Come and share the adventure.</p>
-    <ul>
-        <li>Think eco design</li>
-        <li>Think performance</li>
-        <li>Think accessibility</li>
-</div>
+        <div id="comments">
+        </div>
+        <div id="bottomSlides">
+            <div id="num">
+              <span id="numImgCurrent">
+                1
+              </span>
+                /
+              <span id="numImgTotal">
+
+              </span>
+            </div>
+            <div id="puceSlides">
+            </div>
+        </div>
+
+
+    </div>
+    <div id="bas_text" class="row">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+
+
+        <link href="css/gclc.css" rel="stylesheet">
+
+
+        <div class="col-md-4">
+            <h2>Who will be the best Green developer in this latest edition ? </h2>
+            <p>
+                Eco-design software, is new. Your mission in the month before the contest
+                is to make a short video explaining to a general public the impact of the software. you then publish
+                this video on the networks. The most viral video will be rewarded and will bring you points in the final standings.
+            </p>
+        </div>
+        <div class="col-md-4">
+            <h2>On your marks, Ready, Set, CODE !</h2>
+
+            <p>The Green Code Lab Challenge is a unique opportunity for you to to develop your skills set in ECO-CONCEPTION.<br>
+                Come and share the adventure.</p>
+            <ul>
+                <li>Think eco design</li>
+                <li>Think performance</li>
+                <li>Think accessibility</li>
+            </ul>
+        </div>
 
 
 
 
-<div class="col-md-4">
+        <div class="col-md-4">
 
-    <h2>What's hot on Twitter?</h2>
-    <div id="twitter-div">
-        <div>
-            <a class="twitter-timeline" href="https://twitter.com/hashtag/GCLChallenge" data-widget-id="537334197569200128" data-tweet-limit="5">Tweets sur #GCLChallenge</a>
+            <h2>What's hot on Twitter?</h2>
+            <div id="twitter-div">
+                <div>
+                    <a class="twitter-timeline" href="https://twitter.com/hashtag/GCLChallenge" data-widget-id="537334197569200128" data-tweet-limit="5">Tweets sur #GCLChallenge</a>
 
+                </div>
+
+            </div>
+            <h4 style="text-align:center"><div class="well">Share your thoughts!</div></h4>
         </div>
 
     </div>
-    <h4 style="text-align:center"><div class="well">Share your thoughts!</div></h4>
-</div>
 
+    <hr>
+
+    <footer>
+        <p>Sincerely yours, <a href="http://www.greencodelab-challenge.org" target="_blank">The GreenCodeLab Challenge Team.</a></p>
+    </footer>
+
+
+</div>
