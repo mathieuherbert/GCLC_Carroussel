@@ -272,6 +272,10 @@ function loadImage(){
       }
       $("#puceSlides").append("<div class='puceButton' onmouseover='swapOver("+(i)+")' onclick='swapSlides("+(i)+")'>");
     }
+<<<<<<< HEAD
+=======
+    $("#puceSlides").append("<div class='puceButton' onmouseover='swapOver("+(i)+")' onclick='swapSlides("+(i)+")'>");
+>>>>>>> 7aca2da4b1f45b5a4665686dd0b60a4cd0baa4b2
   }
   $("#numImgTotal").text(tabImages.length);
 }
