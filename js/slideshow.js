@@ -145,7 +145,10 @@ function prev(){
   if( i < 0 ){
     i = indexImg;
   }
-  fullMajImages();
+    fullMajImages();
+    setTimeout(function(){
+        $currentImg.css("opacity","1");
+    },100);
 }
 
 function detectswipe(el) {
