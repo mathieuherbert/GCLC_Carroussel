@@ -63,7 +63,7 @@ li{
     width: 100%;
     display: block;
     position: absolute;
-    top : 50%;
+    top : 45%;
     margin: auto;
 }
 #prev-next li{
@@ -122,24 +122,24 @@ li{
 
 .playButton{
   display:block;
-  width:55px;
-  height:55px;
+  width:30px;
+  height:30px;
   border:0px;
   padding:0px;
 
   background: url("../img/sprites/sprite-square.png") 0 0 no-repeat;
-  background-position:0 0px;
+  background-position:-11 -11px;
 }
 
 .pauseButton{
   display:block;
-  width:55px;
-  height:55px;
+  width:30px;
+  height:30px;
   border:0px;
   padding:0px;
 
   background: url("../img/sprites/sprite-square.png") 0 0 no-repeat;
-  background-position:-55px 0px;
+  background-position:-66px -11px;
 }
 
 #imagesTransition1 span img {
@@ -166,10 +166,10 @@ li{
 #play{
   display: inline;
 
-  top : 10%;
+  top : 2.5%;
   display: block;
   position: absolute;
-  width: 95%;
+  width: 99%;
 }
 
 #playButton{
