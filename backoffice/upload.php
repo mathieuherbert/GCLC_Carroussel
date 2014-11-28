@@ -87,8 +87,6 @@ if(isset($_FILES["upload"]["tmp_name"])){
     $thumb1 = imagecreatetruecolor($thumbnail_image_width_big, $thumbnail_image_height_big);
     $thumb2 = imagecreatetruecolor($thumbnail_image_width_small, $thumbnail_image_height_small);
 
-    echo "---------------- ratio " . $thumbnail_aspect_ratio . " | wbigsource " . $sourceWidth . " | hbigsource " . $sourceHeight . " | wbigdest " . $thumbnail_image_width_big . " | hbigdest " . $thumbnail_image_height_big;
-
     imagecopyresized($thumb1, $source, 0, 0, 0, 0, $thumbnail_image_width_big, $thumbnail_image_height_big, $sourceWidth, $sourceHeight);
     imagecopyresized($thumb2, $source, 0, 0, 0, 0, $thumbnail_image_width_small, $thumbnail_image_height_small, $sourceWidth, $sourceHeight);
 
