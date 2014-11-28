@@ -64,7 +64,6 @@ function majOverImages(rigth){
 function funcTimeOutSlide(){
   if(isPlaying){
     timeOutSlide = setTimeout(function(){ // on utilise une fonction anonyme
-        console.log(new Date(Date.now()));
       addSlide();
       i = (i<indexImg)?i+1:0;
 
@@ -105,7 +104,6 @@ function play(){
     $(".play").css("display","none");
     $(".pause1").css("display","block");
     $(".pause2").css("display","block");
-      console.log(new Date(Date.now()));
       isPlaying = true;
       funcTimeOutSlide();
 
@@ -268,14 +266,12 @@ function loadImage(){
     tabImages[0] = "img/default/"+((screen.width >= 750)?"big" : "small")+"Img1.jpg";
       tabProperties[0] = "Bienvenue sur le carrousel FILanthropes, vous n'avez pas d'image ;)";
     $("#puceSlides").append("<div class='puceButton' onmouseover='swapOver(0)' onclick='swapSlides(0)'>");
-    console.log(  tabImages[0]);
   }
   else{
     filesJSON = obj["files"];
     for(i = 0; i<filesJSON.length;i++){
       for(key in filesJSON[i]){
         tabImages[i] = "img/slideshow/"+((screen.width >= 750)?"big" : "small")+key;
-        console.log(  tabImages[i]);
         tabProperties[i] = filesJSON[i][key];
       }
       $("#puceSlides").append("<div class='puceButton' onmouseover='swapOver("+(i)+")' onclick='swapSlides("+(i)+")'>");
