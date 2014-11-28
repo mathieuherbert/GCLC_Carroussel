@@ -146,7 +146,7 @@ function prev(){
   fullMajImages();
 }
 
-function detectswipe(el,func) {
+function detectswipe(el) {
   swipe_det = new Object();
   swipe_det.sX = 0;
   swipe_det.sY = 0;
@@ -255,7 +255,7 @@ $(document).ready(function(){
       }
     });
 
-    detectswipe('slides',launchSwipe);
+    detectswipe('slides');
 
 }
     clientSideInclude("bas_text", "twitter.html");
