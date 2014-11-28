@@ -256,19 +256,22 @@ function loadImage(){
     url:"frontend/getImages.php",
     async:false
   }).responseText);
+
   if(obj["size"] == "0"){
-    tabImages[0] = "img/default/"+((screen.width >= 750)?"big"+tabImages[indexImage] : "small")+Img1.jpg;
+    tabImages[0] = "img/default/"+((screen.width >= 750)?"big" : "small")+"Img1.jpg";
+    $("#puceSlides").append("<div class='puceButton' onmouseover='swapOver(0)' onclick='swapSlides(0)'>");
+    console.log(  tabImages[0]);
   }
   else{
     filesJSON = obj["files"];
     for(i = 0; i<filesJSON.length;i++){
       for(key in filesJSON[i]){
-        tabImages[i] = "img/slideshow/"+((screen.width >= 750)?"big"+tabImages[indexImage] : "small")+key;
+        tabImages[i] = "img/slideshow/"+((screen.width >= 750)?"big" : "small")+key;
         console.log(  tabImages[i]);
         tabProperties[i] = filesJSON[i][key];
       }
-  }
-    $("#puceSlides").append("<div class='button' onmouseover='swapOver("+(i)+")' onclick='swapSlides("+(i)+")'>");
+      $("#puceSlides").append("<div class='puceButton' onmouseover='swapOver("+(i)+")' onclick='swapSlides("+(i)+")'>");
+    }
   }
   $("#numImgTotal").text(tabImages.length);
 }
