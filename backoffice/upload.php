@@ -43,7 +43,7 @@
 ini_set('display_errors', 'on');
 
 if(isset($_FILES["upload"]["tmp_name"])){
-    list($sourceWidth, $sourceHeight) = getimagesize($_FILES["upload"]["tmp_name"]);
+    list($sourceWidth, $sourceHeight, $sourceType) = getimagesize($_FILES["upload"]["tmp_name"]);
     $optimalWidthBig = 900;
     $optimalWidthSmall = 320;
 
@@ -53,18 +53,21 @@ if(isset($_FILES["upload"]["tmp_name"])){
     $fileWithoutExtension = substr($_FILES["upload"]["name"],0,strrpos($_FILES["upload"]["name"],"."));
     $extension = strtolower( substr($_FILES["upload"]["name"], strrpos($_FILES["upload"]["name"], ".") + 1, strlen($_FILES["upload"]["name"])) );
 
-    if ( $extension == "jpg" || $extension == "jpeg" ) {
-        $source = imagecreatefromjpeg($_FILES["upload"]["tmp_name"]);
-    }
-    else if ( $extension == "png" ) {
-        $source = imagecreatefrompng($_FILES["upload"]["tmp_name"]);
-    }
-    else {
-        echo "<h3 class='text-align'>Seul les jpg et png sont acceptés !</h3>";
+    switch ($sourceType) {
+        case IMAGETYPE_GIF:
+            $source = imagecreatefromgif($_FILES["upload"]["tmp_name"]);
+            break;
+        case IMAGETYPE_JPEG:
+            $source = imagecreatefromjpeg($_FILES["upload"]["tmp_name"]);
+            break;
+        case IMAGETYPE_PNG:
+            $source = imagecreatefrompng($_FILES["upload"]["tmp_name"]);
+            break;
+        default:
+            echo "<h3 class='text-align'>Seul les jpg, gif et png sont acceptés !</h3>";
     }
 
     $source_aspect_ratio = $sourceWidth / $sourceHeight;
-    $thumbnail_aspect_ratio = $optimalWidthBig / $optimalHeightBig;
 
     if ($source_aspect_ratio < 1) {
         $proportionalChanges = $sourceHeight / $optimalHeightBig;
@@ -72,22 +75,20 @@ if(isset($_FILES["upload"]["tmp_name"])){
         $thumbnail_image_height_big = $optimalHeightBig;
         $thumbnail_image_width_big = $sourceWidth / $proportionalChanges;
 
-        $thumbnail_image_width_small = (int) ($optimalWidthSmall * $source_aspect_ratio);
         $thumbnail_image_height_small = $optimalHeightSmall;
+        $thumbnail_image_width_small = $sourceWidth / $proportionalChanges;
     } else {
-        $proportionalChanges = $sourceHeight / $optimalHeightBig;
+        $proportionalChanges = $sourceWidth / $optimalWidthBig;
 
         $thumbnail_image_height_big = $sourceHeight / $proportionalChanges;
         $thumbnail_image_width_big = $optimalWidthBig;
 
+        $thumbnail_image_height_small = $sourceHeight / $proportionalChanges;
         $thumbnail_image_width_small = $optimalWidthSmall;
-        $thumbnail_image_height_small = (int) ($optimalHeightSmall / $source_aspect_ratio);
     }
 
     $thumb1 = imagecreatetruecolor($thumbnail_image_width_big, $thumbnail_image_height_big);
     $thumb2 = imagecreatetruecolor($thumbnail_image_width_small, $thumbnail_image_height_small);
-
-    echo "---------------- ratio " . $thumbnail_aspect_ratio . " | wbigsource " . $sourceWidth . " | hbigsource " . $sourceHeight . " | wbigdest " . $thumbnail_image_width_big . " | hbigdest " . $thumbnail_image_height_big;
 
     imagecopyresized($thumb1, $source, 0, 0, 0, 0, $thumbnail_image_width_big, $thumbnail_image_height_big, $sourceWidth, $sourceHeight);
     imagecopyresized($thumb2, $source, 0, 0, 0, 0, $thumbnail_image_width_small, $thumbnail_image_height_small, $sourceWidth, $sourceHeight);
