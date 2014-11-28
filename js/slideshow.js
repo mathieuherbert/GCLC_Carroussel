@@ -6,11 +6,23 @@
 
 function swapSlides(id){
   i = id;
+  integrateImage();
   window.clearTimeout(timeOutSlide);
   timeOutSlide = setTimeout(function(){ // on utilise une fonction anonyme
     funcTimeOutSlide();
   }, 3000);
-  fullMajImages();
+  fullMajImages(id);
+    $img = $('#slides img');
+    $span = $('#comments span');
+    indexImg = $img.length-1;
+    $("#numImgCurrent").text(i+1);
+    $currentImg.css("opacity","1");
+    $currentImg.addClass("animated");
+    $currentImg.addClass("zoomIn");
+    setTimeout(function(){
+        $currentImg.removeClass("animated");
+        $currentImg.removeClass("zoomIn");
+    },1000);
 
 }
 
@@ -24,21 +36,21 @@ function fullMajImages(){
   $span.css('display', 'none');
   $currentImg = $img.eq(i); // on définit la nouvelle image
   $currentSpan = $span.eq(i);
-  var random = Math.floor(Math.random() * (2 - 0)) + 0;
-  if(random == 0){
-    setTimeout(function(){
-      $currentImg.css("opacity","1");
-    },100);
-  }
-  else{
-    $currentImg.css("opacity","1");
-    $currentImg.addClass("animated");
-    $currentImg.addClass("zoomIn");
-    setTimeout(function(){
-      $currentImg.removeClass("animated");
-      $currentImg.removeClass("zoomIn");
-    },1000);
-  }
+//  var random = Math.floor(Math.random() * (2 - 0)) + 0;
+//  if(random == 0){
+//    setTimeout(function(){
+//      $currentImg.css("opacity","1");
+//    },100);
+//  }
+//  else{
+//    $currentImg.css("opacity","1");
+//    $currentImg.addClass("animated");
+//    $currentImg.addClass("zoomIn");
+//    setTimeout(function(){
+//      $currentImg.removeClass("animated");
+//      $currentImg.removeClass("zoomIn");
+//    },1000);
+//  }
 
   $currentImg.css('display', 'block'); // puis on l'affiche
   $currentSpan.css('display', 'block');
@@ -70,9 +82,10 @@ function funcTimeOutSlide(){
     timeOutSlide = setTimeout(function(){ // on utilise une fonction anonyme
       addSlide();
       i = (i<indexImg)?i+1:0;
-
       fullMajImages();
-
+        setTimeout(function(){
+          $currentImg.css("opacity","1");
+        },100);
       funcTimeOutSlide(); // on oublie pas de relancer la fonction à la fin
 
       // if(indexImg < (tabImages.length-1)){
@@ -99,6 +112,9 @@ function next(){
     majOverImages();
   }
   fullMajImages();
+    setTimeout(function(){
+        $currentImg.css("opacity","1");
+    },100);
 
 }
 
@@ -278,7 +294,7 @@ function loadImage(){
         tabImages[i] = "img/slideshow/"+((screen.width >= 750)?"big" : "small")+key;
         tabProperties[i] = filesJSON[i][key];
       }
-      $("#puceSlides").append("<div class='puceButton' onmouseover='swapOver("+(i)+")' onclick='swapSlides("+(i)+")'>");
+      $("#puceSlides").append("<div class='puceButton' onmouseover='swapOver("+i+")' onclick='swapSlides("+i+")'>");
     }
   }
   $("#numImgTotal").text(tabImages.length);
