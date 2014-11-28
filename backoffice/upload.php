@@ -14,9 +14,9 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
     <!-- This is a nice empty css. Feel free to override the theme! -->
     <link href="../css/gclc.css" rel="stylesheet">
-    <script type="text/javascript" src="../js/responsiveImage.js"></script>
+
     <script type="text/javascript" src="../js/jquery.js"></script>
-    <script type="text/javascript" src="../js/slideshow.js"></script>
+
 </head>
 <body>
 <nav class="navbar glc-navbar navbar-fixed-top" role="navigation">
