@@ -154,17 +154,14 @@ function prev(){
   fullMajImages();
 }
 
-function detectswipe(el,func) {
+function detectswipe(el) {
   swipe_det = new Object();
   swipe_det.sX = 0;
   swipe_det.sY = 0;
   swipe_det.eX = 0;
   swipe_det.eY = 0;
   var min_x = 20;  //min x swipe for horizontal swipe
-  var max_x = 40;  //max x difference for vertical swipe
-  var min_y = 40;  //min y swipe for vertical swipe
   var max_y = 50;  //max y difference for horizontal swipe
-  var direc = "";
   ele = document.getElementById("slideshow");
   ele.addEventListener('touchstart',function(e){
     var t = e.touches[0];
@@ -180,24 +177,13 @@ function detectswipe(el,func) {
   ele.addEventListener('touchend',function(e){
     //horizontal detection
     if ((((swipe_det.eX - min_x > swipe_det.sX) || (swipe_det.eX + min_x < swipe_det.sX)) && ((swipe_det.eY < swipe_det.sY + max_y) && (swipe_det.sY > swipe_det.eY - max_y)))) {
-      if(swipe_det.eX > swipe_det.sX) direc = "r";
-      else direc = "l";
+      if(swipe_det.eX > swipe_det.sX) prev();
+      else next();
     }
 
-    if (direc != "") {
-      if(typeof func == 'function') func(el,direc);
-    }
-    direc = "";
   },false);
 }
 
-function launchSwipe(el,d) {
-  if (d == "l") {
-    next();
-  } else if (d == "r") {
-    prev();
-  }
-}
 function clientSideInclude(id, url) {
     var req = false;
     // For Safari, Firefox, and other non-MS browsers
@@ -277,7 +263,7 @@ $(document).ready(function(){
       }
     });
 
-    detectswipe('slides',launchSwipe);
+    detectswipe('slides');
 
 }
     clientSideInclude("bas_text", "twitter.html");
@@ -289,8 +275,6 @@ $(document).ready(function(){
   funcTimeOutSlide();
 
 });
-
-var addEvent=function(){return document.addEventListener?function(a,c,d){if(a&&a.nodeName||a===window)a.addEventListener(c,d,!1);else if(a&&a.length)for(var b=0;b<a.length;b++)addEvent(a[b],c,d)}:function(a,c,d){if(a&&a.nodeName||a===window)a.attachEvent("on"+c,function(){return d.call(a,window.event)});else if(a&&a.length)for(var b=0;b<a.length;b++)addEvent(a[b],c,d)}}();
 
 
 isPlaying = true;
