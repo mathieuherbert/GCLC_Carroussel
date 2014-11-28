@@ -39,20 +39,35 @@ body{
 
 #prev{
     display:block;
+    position: relative;
     width:55px;
     height:55px;
 
-    background: url("../img/sprites/sprite-square.png") 0 0 no-repeat;
+    background:#ffffff;
     background-position:0 -110px;
+}
+
+#prev span{
+    position: absolute;
+    margin: 18% 30%;
+    font-size: 26px;
+
 }
 
 #next{
     display:block;
+    position: relative;
     width:54px;
     height:55px;
 
-    background: url("../img/sprites/sprite-square.png") 0 0 no-repeat;
+    background:#ffffff;
     background-position:0 -55px;
+}
+
+#next span{
+    position: absolute;
+    margin: 18% 40%;
+    font-size: 26px;
 }
 
 li{
@@ -122,27 +137,57 @@ li{
 
 .playButton{
   display:block;
+    position: relative;
   width:30px;
   height:30px;
   border:0px;
   padding:0px;
-
-  background: url("../img/sprites/sprite-square.png") 0 0 no-repeat;
-  background-position:-11 -11px;
+    background:#ffffff;
 }
 
 .pauseButton{
   display:block;
+    position: relative;
   width:30px;
   height:30px;
   border:0px;
   padding:0px;
 
-  background: url("../img/sprites/sprite-square.png") 0 0 no-repeat;
-  background-position:-66px -11px;
+    background:#ffffff;
+}
+
+.play{
+    position: absolute;
+    margin: 20% 31%;
+    font-size: 15px;
+}
+
+.pause1{
+    position: absolute;
+    margin: 15% 30%;
+    font-size: 15px;
+}
+
+.pause2{
+    position: absolute;
+    margin: 15% 50%;
+    font-size: 15px;
 }
 
 .puceButton{
+    display: inline-block;
+    position: relative;
+    width:1em;
+    height:1em;
+    margin: 5px;
+    padding: 5 5px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    background:#020202;
+}
+
+.navButton{
     display: inline-block;
     position: relative;
     width:1em;

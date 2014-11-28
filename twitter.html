@@ -25,12 +25,12 @@
         <ul id="slides">
         </ul>
         <div id="play">
-            <button id="playButton" class="pauseButton" onclick="play();"/>
+            <div id="playButton" class="pauseButton" onclick="play();"><span class="play" style="display: none">&#9658</span><span class="pause1" style="display: block">&#9614;</span><span class="pause2" style="display: block">&#9614;</span></div>
         </div>
         <div id="prev-next">
             <ul>
-                <li id="prev-li"><div id="prev" onclick='prev();'></div></li>
-                <li id="next-li"><div id="next" onclick='next();'></div></li>
+                <li id="prev-li"><div id="prev" onclick='prev();'><span><</span></div></li>
+                <li id="next-li"><div id="next" onclick='next();'><span>></span></div></li>
             </ul>
         </div>
 

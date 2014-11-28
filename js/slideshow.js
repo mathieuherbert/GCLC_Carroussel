@@ -99,8 +99,11 @@ function next(){
 }
 
 function play(){
-  if($("#playButton").attr("class") === "playButton"){
+  if($(".playButton").attr("class") === "playButton"){
     $("#playButton").attr("class","pauseButton");
+    $(".play").css("display","none");
+    $(".pause1").css("display","block");
+    $(".pause2").css("display","block");
     timeOutSlide = setTimeout(function(){ // on utilise une fonction anonyme
       funcTimeOutSlide();
     }, 3000);
@@ -108,6 +111,9 @@ function play(){
   }
   else{
     $("#playButton").attr("class","playButton");
+    $(".play").css("display","block");
+    $(".pause1").css("display","none");
+    $(".pause2").css("display","none");
     window.clearTimeout(timeOutSlide);
     isPlaying = false;
   }
